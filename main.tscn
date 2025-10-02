@@ -1,12 +1,17 @@
-[gd_scene format=3 uid="uid://310a7mbtjyf7"]
+[gd_scene load_steps=2 format=3 uid="uid://310a7mbtjyf7"]
 
-[node name="Main" type="Node"]
+[ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://player.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 34.0
-offset_top = 40.0
-offset_right = 74.0
-offset_bottom = 63.0
+offset_left = 36.0
+offset_top = 33.0
+offset_right = 99.0
+offset_bottom = 56.0
 text = "YEEEEES"
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(63, 78)
