@@ -71,6 +71,6 @@ func _on_chat_detection_area_exited(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	$Timer.wait_time = choose([0.5, 1, 1.5])
-	print(choose([IDLE, NEW_DIR, MOVE]))
+
 	$Timer.start()
 	current_state = choose([IDLE, NEW_DIR, MOVE])
