@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://nq6125qxrgv4"]
+
+[node name="Cript" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 537.0
+offset_top = 181.0
+offset_right = 636.0
+offset_bottom = 204.0
+text = "YEEEEEEEEES
+la cript"

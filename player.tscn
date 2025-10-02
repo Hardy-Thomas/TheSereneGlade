@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://7q4tqo0mblic"]
+[gd_scene load_steps=17 format=3 uid="uid://7q4tqo0mblic"]
 
 [ext_resource type="Script" uid="uid://bcr5sryin7daw" path="res://player.gd" id="1_urp6f"]
 [ext_resource type="Texture2D" uid="uid://bumrti78qb6ck" path="res://ART/Sprites/MC/OverWorldMCAnimation/Down/sprite_00.png" id="2_bwjto"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b7hmup2sw0nqv" path="res://ART/Sprites/MC/OverWorldMCAnimation/Up/sprite_09.png" id="11_7lmhl"]
 [ext_resource type="Texture2D" uid="uid://cy2hlv6f3jlds" path="res://ART/Sprites/MC/OverWorldMCAnimation/Up/sprite_10.png" id="12_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://chix0l6avn0v5" path="res://ART/Sprites/MC/OverWorldMCAnimation/Up/sprite_11.png" id="13_jm5j8"]
+[ext_resource type="Script" uid="uid://byvi4l6gcp8nu" path="res://camera_2d.gd" id="14_bwjto"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7hik5"]
 animations = [{
@@ -98,4 +99,9 @@ sprite_frames = SubResource("SpriteFrames_7hik5")
 animation = &"UpWalk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_qtqh7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("14_bwjto")
+target = NodePath("..")

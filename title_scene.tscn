@@ -9,18 +9,18 @@ script = ExtResource("1_wkkv4")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 247.0
-offset_top = 90.0
-offset_right = 335.0
-offset_bottom = 117.0
+offset_left = 537.0
+offset_top = 236.0
+offset_right = 625.0
+offset_bottom = 263.0
 text = "Bienvenue"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 251.0
-offset_top = 138.0
-offset_right = 332.0
-offset_bottom = 187.0
+offset_left = 541.0
+offset_top = 284.0
+offset_right = 622.0
+offset_bottom = 333.0
 text = "Start"
 metadata/_edit_use_anchors_ = true
 
