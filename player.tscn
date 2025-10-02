@@ -89,15 +89,13 @@ animations = [{
 size = Vector2(12, 29)
 
 [node name="Player" type="Area2D"]
-position = Vector2(43, 41)
+position = Vector2(64, 55)
 script = ExtResource("1_urp6f")
 speed = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(16, 16)
 sprite_frames = SubResource("SpriteFrames_7hik5")
 animation = &"UpWalk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, 16.5)
 shape = SubResource("RectangleShape2D_qtqh7")

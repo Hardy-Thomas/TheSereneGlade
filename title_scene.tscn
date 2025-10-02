@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdg4tsa7gd0di"]
+
+[ext_resource type="Script" uid="uid://bqvy7ocmdgtp8" path="res://title_scene.gd" id="1_wkkv4"]
+
+[node name="TitleScene" type="Node2D"]
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("1_wkkv4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 17.0
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 35.0
+text = "Bienvenue"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 21.0
+offset_top = 56.0
+offset_right = 102.0
+offset_bottom = 105.0
+text = "Start"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
