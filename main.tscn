@@ -7,11 +7,11 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 36.0
-offset_top = 33.0
-offset_right = 99.0
-offset_bottom = 56.0
+offset_left = 280.0
+offset_top = 103.0
+offset_right = 343.0
+offset_bottom = 126.0
 text = "YEEEEES"
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(63, 78)
+position = Vector2(307, 148)
