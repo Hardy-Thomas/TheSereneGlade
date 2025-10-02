@@ -17,9 +17,9 @@ text = "Bienvenue"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 541.0
+offset_left = 539.0
 offset_top = 284.0
-offset_right = 622.0
+offset_right = 620.0
 offset_bottom = 333.0
 text = "Start"
 metadata/_edit_use_anchors_ = true
