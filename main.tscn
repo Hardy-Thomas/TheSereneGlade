@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://310a7mbtjyf7"]
+[gd_scene load_steps=3 format=3 uid="uid://310a7mbtjyf7"]
 
 [ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dd8ikwg8yprw3" path="res://npc.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node2D"]
 
@@ -12,6 +13,8 @@ offset_top = 33.0
 offset_right = 99.0
 offset_bottom = 56.0
 text = "YEEEEES"
+
+[node name="npc" parent="." instance=ExtResource("2_0xm2m")]
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(63, 78)
