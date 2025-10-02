@@ -1,20 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://310a7mbtjyf7"]
+[gd_scene load_steps=6 format=3 uid="uid://310a7mbtjyf7"]
 
 [ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://dd8ikwg8yprw3" path="res://npc.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://tu01wpcnie2h" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bumrti78qb6ck" path="res://ART/Sprites/MC/OverWorldMCAnimation/Down/sprite_00.png" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://csb67kau0h6em" path="res://porte_cript.gd" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://nq6125qxrgv4" path="res://cript.tscn" id="5_272bh"]
 
-[node name="Main" type="Node2D"]
+
+[node name="tuto" type="Node2D"]
+script = ExtResource("1_lquwl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 36.0
-offset_top = 33.0
-offset_right = 99.0
-offset_bottom = 56.0
+visible = false
+offset_left = 572.0
+offset_top = 85.0
+offset_right = 636.0
+offset_bottom = 109.0
 text = "YEEEEES"
 
 [node name="npc" parent="." instance=ExtResource("2_0xm2m")]
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(63, 78)
+position = Vector2(599, 302)
+
+[node name="pnj1" type="CharacterBody2D" parent="."]
+position = Vector2(605, 210)
+
+[node name="Sprite2D" type="Sprite2D" parent="pnj1"]
+texture = ExtResource("2_0xm2m")
+
+[node name="porteCript" type="Area2D" parent="."]
+script = ExtResource("4_7mycd")
+scene_to_load = ExtResource("5_272bh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="porteCript"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
