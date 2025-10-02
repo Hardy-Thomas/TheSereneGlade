@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://nq6125qxrgv4"]
+[gd_scene load_steps=3 format=3 uid="uid://nq6125qxrgv4"]
 
 [ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://player.tscn" id="1_ihp3y"]
+[ext_resource type="PackedScene" uid="uid://dd8ikwg8yprw3" path="res://npc.tscn" id="1_tibry"]
 
 [node name="Cript" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 537.0
@@ -15,3 +17,7 @@ text = "YEEEEEEEEES
 la cript"
 
 [node name="Player" parent="." instance=ExtResource("1_ihp3y")]
+position = Vector2(599, 298)
+
+[node name="npc" parent="." instance=ExtResource("1_tibry")]
+position = Vector2(408, 276)

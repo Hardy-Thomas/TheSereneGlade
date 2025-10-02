@@ -1,25 +1,53 @@
-[gd_scene load_steps=7 format=3 uid="uid://310a7mbtjyf7"]
+[gd_scene load_steps=12 format=3 uid="uid://310a7mbtjyf7"]
 
 [ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://tu01wpcnie2h" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bumrti78qb6ck" path="res://ART/Sprites/MC/OverWorldMCAnimation/Down/sprite_00.png" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://bxenimt2u26kf" path="res://canvas_layer.gd" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://csb67kau0h6em" path="res://porte_cript.gd" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dd8ikwg8yprw3" path="res://npc.tscn" id="6_7mycd"]
 
-[sub_resource type="GDScript" id="GDScript_lquwl"]
-script/source = "extends Area2D
+[sub_resource type="Animation" id="Animation_7mycd"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
 
+[sub_resource type="Animation" id="Animation_272bh"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
 
-#@export var scene_to_load: PackedScene
+[sub_resource type="Animation" id="Animation_5vw27"]
+length = 0.001
 
-
-#func _ready():
-	#connect(\"area_entered\", Callable(self, \"_on_area_entered\"))
-
-
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group(\"Players\"):
-		get_tree().change_scene_to_file(\"res://cript.tscn\")
-"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vw27"]
+_data = {
+&"RESET": SubResource("Animation_5vw27"),
+&"fade_in": SubResource("Animation_7mycd"),
+&"fade_out": SubResource("Animation_272bh")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(31.34375, 32)
@@ -27,7 +55,8 @@ size = Vector2(31.34375, 32)
 [node name="tuto" type="Node2D"]
 script = ExtResource("1_lquwl")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["fade"]]
+script = ExtResource("2_lquwl")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 visible = false
@@ -37,8 +66,24 @@ offset_right = 636.0
 offset_bottom = 109.0
 text = "YEEEEES"
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+process_mode = 2
+root_node = NodePath("../ColorRect")
+libraries = {
+&"": SubResource("AnimationLibrary_5vw27")
+}
+
 [node name="Player" parent="." groups=["Players"] instance=ExtResource("1_ig7tw")]
-position = Vector2(599, 302)
+position = Vector2(601, 300)
 
 [node name="pnj1" type="CharacterBody2D" parent="."]
 position = Vector2(533, 216)
@@ -47,10 +92,11 @@ position = Vector2(533, 216)
 texture = ExtResource("2_0xm2m")
 
 [node name="porteCript" type="Area2D" parent="."]
-position = Vector2(725, 218)
-script = SubResource("GDScript_lquwl")
+position = Vector2(580, 218)
+script = ExtResource("4_7mycd")
 
 [node name="Sprite2D" type="Sprite2D" parent="porteCript"]
+visible = false
 texture = ExtResource("2_0xm2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="porteCript"]

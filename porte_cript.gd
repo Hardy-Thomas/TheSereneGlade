@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@export var scene_to_load: PackedScene
+#@export var scene_to_load: PackedScene
 
 
 #func _ready():
@@ -10,4 +10,11 @@ extends Area2D
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Players"):
-		get_tree().change_scene_to(scene_to_load)
+		#var fade_timer = Timer.new()
+		#fade_timer.wait_time = 1
+		#fade_timer.one_shot = true
+		#add_child(fade_timer)
+		#fade_timer.start()
+		#fade_timer.timeout.connect(func(): 
+		var fade_manager = get_tree().get_first_node_in_group("fade")
+		fade_manager.fade_to_scene("res://cript.tscn")
