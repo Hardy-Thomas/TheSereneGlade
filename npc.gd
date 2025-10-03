@@ -65,12 +65,12 @@ func move(delta):
 
 
 
-func _on_chat_detection_area_entered(body: Node2D) -> void:
+func _on_chat_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		print("IN")
 		player =body 
 		player_in_chat_zone = true
-func _on_chat_detection_area_exited(body: Node2D) -> void:
+func _on_chat_detection_body_exited(body: Node2D) -> void:
 	print("OUT")
 	if body.is_in_group("Player"):
 		emit_signal("dialogue_exited")

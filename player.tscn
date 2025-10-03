@@ -89,7 +89,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtqh7"]
 size = Vector2(12, 29)
 
-[node name="Player" type="Area2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(64, 55)
 script = ExtResource("1_urp6f")
 speed = 100

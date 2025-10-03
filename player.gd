@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 
 @export var speed = 400 # HERE we set up the speed variable and it can be changed afterward 
@@ -9,7 +9,8 @@ func _ready():
 
 #code that i stole from the tutorial and changed
 func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
+	velocity = Vector2.ZERO # The player's movement vector.
+	move_and_slide()
 	
 	# --- Déplacements ---
 	if Input.is_action_pressed("move_right"):
