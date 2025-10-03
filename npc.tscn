@@ -69,5 +69,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]
 [connection signal="area_exited" from="ChatDetection" to="." method="_on_chat_detection_area_exited"]
 [connection signal="body_entered" from="ChatDetection" to="." method="_on_chat_detection_body_entered"]
+[connection signal="body_exited" from="ChatDetection" to="." method="_on_chat_detection_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="dialogue_finished" from="dialogue" to="." method="_on_dialogue_dialogue_finished"]
