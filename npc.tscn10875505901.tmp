@@ -37,7 +37,7 @@ radius = 5.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_mcvl2"]
 radius = 16.0
 
-[node name="Npc" type="CharacterBody2D"]
+[node name="npc" type="CharacterBody2D"]
 position = Vector2(129, 31)
 script = ExtResource("1_xxcha")
 
@@ -68,7 +68,6 @@ offset_bottom = -243.0
 metadata/_edit_use_anchors_ = true
 
 [connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]
-[connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]
 [connection signal="area_exited" from="ChatDetection" to="." method="_on_chat_detection_area_exited"]
 [connection signal="body_entered" from="ChatDetection" to="." method="_on_chat_detection_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

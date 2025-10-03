@@ -1,14 +1,23 @@
 extends Control
 
+signal dialogue_finished
 
 @export_file("*.json") var d_file#pour renomer tous les fichier mis dans la variable
 var dialogue = []
 var current_dialogue_id = 0
 var dialogue_is_active =false
+var can_accept_input: bool = true  # pour gérer le cooldown
 func _ready():
-	start()
+	$NinePatchRect.hide()
 
 func start():
+	if dialogue_is_active :
+		
+		return
+	if !get_parent().player_in_chat_zone:
+		return
+	dialogue_is_active = true
+	$NinePatchRect.show()
 	dialogue = load_dialogue()
 	current_dialogue_id = -1
 	next_script()
@@ -20,13 +29,44 @@ func load_dialogue():
 	return content
 	
 	
-func _input(event: InputEvent):#passer au dialogue suivant si touche préssé
-	if event.is_action_pressed("ui_accept"):
+
+
+func _input(event: InputEvent) -> void:
+	if !dialogue_is_active or !can_accept_input:
+		return
+	if !get_parent().player_in_chat_zone:
+		return
+	if event.is_action_released("ui_accept") : #FUCK IDK why i am this bad but well it is workish
 		next_script()
+		can_accept_input = false   # on bloque l'input
+		$Timer.start(1)          # on lance le timer (demi-seconde)
+
+		
 func next_script():
 	current_dialogue_id += 1
 	if current_dialogue_id >= len(dialogue):
-		return
-	$NinePatchRect/Name.text = dialogue[current_dialogue_id]['name']
-	$NinePatchRect/Text.text = dialogue[current_dialogue_id]['text']
+
+		dialogue_is_active = false 
+		
+		$NinePatchRect.hide()
+		emit_signal("dialogue_finished")
+
+		
+	else : 
+
+		$NinePatchRect/Name.text = dialogue[current_dialogue_id]['name']
+		$NinePatchRect/Text.text = dialogue[current_dialogue_id]['text']
+	
+
+
+func _on_timer_timeout() -> void:
+	can_accept_input = true
+
+
+func _on_npc_dialogue_exited() -> void:
+	dialogue = []
+	current_dialogue_id = 0
+	dialogue_is_active =false
+	can_accept_input = true  # pour gérer le cooldown
+	$NinePatchRect.hide()
 	

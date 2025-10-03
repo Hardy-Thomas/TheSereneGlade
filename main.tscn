@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://tu01wpcnie2h" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bumrti78qb6ck" path="res://ART/Sprites/MC/OverWorldMCAnimation/Down/sprite_00.png" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://bxenimt2u26kf" path="res://canvas_layer.gd" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dd8ikwg8yprw3" path="res://npc.tscn" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://csb67kau0h6em" path="res://porte_cript.gd" id="4_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dd8ikwg8yprw3" path="res://npc.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://nq6125qxrgv4" path="res://crypt.tscn" id="5_272bh"]
 
 [sub_resource type="Animation" id="Animation_7mycd"]
 resource_name = "fade_in"
@@ -74,6 +74,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+[node name="Npc" parent="." instance=ExtResource("2_7mycd")]
+position = Vector2(652, 299)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 process_mode = 2
