@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Npc
 signal dialogue_exited
 
 
@@ -71,7 +72,6 @@ func _on_chat_detection_body_entered(body: Node2D) -> void:
 		player =body 
 		player_in_chat_zone = true
 func _on_chat_detection_body_exited(body: Node2D) -> void:
-	print("OUT")
 	if body.is_in_group("Player"):
 		emit_signal("dialogue_exited")
 		player_in_chat_zone = false
@@ -82,7 +82,7 @@ func _on_timer_timeout() -> void:
 
 	$Timer.start()
 	current_state = choose([IDLE, NEW_DIR, MOVE])
-
+	
 
 func _on_dialogue_dialogue_finished() -> void:
 	$dialogue.dialogue_is_active = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4cnn5nl18mc1"
-path="res://.godot/imported/sprite_2.png-1b913a5dd891e676d81936951f7eae58.ctex"
+uid="uid://df8ptnfaw5fds"
+path="res://.godot/imported/sprite_01.png-bc69a4e5f595018519198c87ed1d5f93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Sprites/NPC/sprite_2.png"
-dest_files=["res://.godot/imported/sprite_2.png-1b913a5dd891e676d81936951f7eae58.ctex"]
+source_file="res://ART/Sprites/Follower/follower1/left/sprite_01.png"
+dest_files=["res://.godot/imported/sprite_01.png-bc69a4e5f595018519198c87ed1d5f93.ctex"]
 
 [params]
 

@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://dd8ikwg8yprw3"]
 
 [ext_resource type="Script" uid="uid://b644a5setmi0s" path="res://npc.gd" id="1_xxcha"]
-[ext_resource type="Texture2D" uid="uid://bxs23toc2v1uk" path="res://ART/Sprites/NPC/sprite_0.png" id="2_d61ma"]
+[ext_resource type="Texture2D" uid="uid://bxs23toc2v1uk" path="res://ART/Sprites/NPC/Npc1/sprite_0.png" id="2_d61ma"]
 [ext_resource type="PackedScene" uid="uid://c6fjnqiacddbx" path="res://dialogue.tscn" id="3_kh24r"]
-[ext_resource type="Texture2D" uid="uid://cq5aa1khg7non" path="res://ART/Sprites/NPC/sprite_1.png" id="3_slxoh"]
-[ext_resource type="Texture2D" uid="uid://d4cnn5nl18mc1" path="res://ART/Sprites/NPC/sprite_2.png" id="4_l64hl"]
-[ext_resource type="Texture2D" uid="uid://b8afgf774jdii" path="res://ART/Sprites/NPC/sprite_3.png" id="5_215dd"]
-[ext_resource type="Texture2D" uid="uid://gm2yphsynhv7" path="res://ART/Sprites/NPC/sprite_4.png" id="6_p5bpe"]
+[ext_resource type="Texture2D" uid="uid://cq5aa1khg7non" path="res://ART/Sprites/NPC/Npc1/sprite_1.png" id="3_slxoh"]
+[ext_resource type="Texture2D" uid="uid://d4cnn5nl18mc1" path="res://ART/Sprites/NPC/Npc1/sprite_2.png" id="4_l64hl"]
+[ext_resource type="Texture2D" uid="uid://b8afgf774jdii" path="res://ART/Sprites/NPC/Npc1/sprite_3.png" id="5_215dd"]
+[ext_resource type="Texture2D" uid="uid://gm2yphsynhv7" path="res://ART/Sprites/NPC/Npc1/sprite_4.png" id="6_p5bpe"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ul7y6"]
 animations = [{
