@@ -4,8 +4,11 @@
 [ext_resource type="Script" uid="uid://tu01wpcnie2h" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bumrti78qb6ck" path="res://ART/Sprites/MC/OverWorldMCAnimation/Down/sprite_00.png" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dd8ikwg8yprw3" path="res://npc.tscn" id="2_7mycd"]
+[ext_resource type="Script" uid="uid://bxenimt2u26kf" path="res://canvas_layer.gd" id="2_272bh"]
 [ext_resource type="Script" uid="uid://csb67kau0h6em" path="res://porte_cript.gd" id="4_7mycd"]
-[ext_resource type="PackedScene" uid="uid://nq6125qxrgv4" path="res://crypt.tscn" id="5_272bh"]
+
+[sub_resource type="Animation" id="Animation_5vw27"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_7mycd"]
 resource_name = "fade_in"
@@ -39,9 +42,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_5vw27"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5vw27"]
 _data = {
 &"RESET": SubResource("Animation_5vw27"),
@@ -55,16 +55,8 @@ size = Vector2(31.34375, 32)
 [node name="tuto" type="Node2D"]
 script = ExtResource("1_lquwl")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["fade"]]
-script = ExtResource("2_lquwl")
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-visible = false
-offset_left = 572.0
-offset_top = 85.0
-offset_right = 636.0
-offset_bottom = 109.0
-text = "YEEEEES"
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["FadeInOut"]]
+script = ExtResource("2_272bh")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -74,8 +66,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-[node name="Npc" parent="." instance=ExtResource("2_7mycd")]
-position = Vector2(652, 299)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 process_mode = 2
@@ -84,14 +74,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_5vw27")
 }
 
-[node name="Player" parent="." groups=["Players"] instance=ExtResource("1_ig7tw")]
+[node name="Npc" parent="." instance=ExtResource("2_7mycd")]
+position = Vector2(652, 299)
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(601, 300)
-
-[node name="pnj1" type="CharacterBody2D" parent="."]
-position = Vector2(533, 216)
-
-[node name="Sprite2D" type="Sprite2D" parent="pnj1"]
-texture = ExtResource("2_0xm2m")
 
 [node name="porteCript" type="Area2D" parent="."]
 position = Vector2(580, 218)
@@ -105,9 +92,6 @@ texture = ExtResource("2_0xm2m")
 shape = SubResource("RectangleShape2D_7mycd")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-
-[node name="npc" parent="." instance=ExtResource("6_7mycd")]
-position = Vector2(395, 208)
 
 [connection signal="area_entered" from="Player" to="porteCript" method="_on_player_area_entered"]
 [connection signal="area_entered" from="porteCript" to="porteCript" method="_on_area_entered"]
