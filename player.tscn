@@ -89,7 +89,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtqh7"]
 size = Vector2(12, 29)
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" groups=["Player"]]
 position = Vector2(64, 55)
 script = ExtResource("1_urp6f")
 speed = 100
@@ -98,8 +98,7 @@ speed = 100
 sprite_frames = SubResource("SpriteFrames_7hik5")
 animation = &"UpWalk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 shape = SubResource("RectangleShape2D_qtqh7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
