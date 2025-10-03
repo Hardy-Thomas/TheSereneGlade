@@ -102,5 +102,11 @@ animation = &"UpWalk"
 shape = SubResource("RectangleShape2D_qtqh7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 1200
+limit_bottom = 600
+limit_smoothed = true
 script = ExtResource("14_bwjto")
 target = NodePath("..")

@@ -1,14 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdg4tsa7gd0di"]
+[gd_scene load_steps=3 format=3 uid="uid://bdg4tsa7gd0di"]
 
 [ext_resource type="Script" uid="uid://bqvy7ocmdgtp8" path="res://title_scene.gd" id="1_wkkv4"]
+[ext_resource type="Texture2D" uid="uid://dmm6jyekufl1" path="res://ART/Props/sprite_0.png" id="2_176dl"]
 
 [node name="TitleScene" type="Node2D"]
 scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_wkkv4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_priority = 1
 
 [node name="Label" type="Label" parent="CanvasLayer"]
+top_level = true
 offset_left = 537.0
 offset_top = 236.0
 offset_right = 625.0
@@ -17,11 +20,17 @@ text = "Bienvenue"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="CanvasLayer"]
+top_level = true
 offset_left = 539.0
 offset_top = 284.0
 offset_right = 620.0
 offset_bottom = 333.0
 text = "Start"
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite0" type="Sprite2D" parent="."]
+position = Vector2(60000000, 30000002)
+scale = Vector2(234375.02, 117187.51)
+texture = ExtResource("2_176dl")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
