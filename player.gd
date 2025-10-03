@@ -14,12 +14,16 @@ func _process(delta):
 	
 	# --- Déplacements ---
 	if Input.is_action_pressed("move_right"):
+		SoundManager.play_sound("walk")
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
+		SoundManager.play_sound("walk")
 		velocity.x -= 1
 	if Input.is_action_pressed("move_down"):
+		SoundManager.play_sound("walk")
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
+		SoundManager.play_sound("walk")
 		velocity.y -= 1
 
 	# --- Normalisation et mouvement ---
