@@ -8,13 +8,13 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="."]
 offset_left = 537.0
 offset_top = 181.0
 offset_right = 636.0
-offset_bottom = 204.0
+offset_bottom = 230.0
 text = "YEEEEEEEEES
-la cript"
+la crypt"
 
 [node name="Player" parent="." instance=ExtResource("1_ihp3y")]
 position = Vector2(599, 298)
