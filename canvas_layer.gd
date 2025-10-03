@@ -16,6 +16,7 @@ func fade_to_scene(scene_path: String):
 	anim.play("fade_out")
 	await anim.animation_finished
 	get_tree().paused = false
+	SoundManager.play_sound("portail")
 	get_tree().change_scene_to_file(scene_path)
 	
 	anim.play("fade_in")

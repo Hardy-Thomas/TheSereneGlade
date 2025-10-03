@@ -12,21 +12,30 @@ process_priority = 1
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 top_level = true
-offset_left = 537.0
-offset_top = 236.0
-offset_right = 625.0
-offset_bottom = 263.0
-text = "Bienvenue"
+anchors_preset = -1
+anchor_right = -0.013333334
+offset_left = 580.0
+offset_top = 256.0
+offset_right = 668.0
+offset_bottom = 283.0
+text = "Welcome"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 top_level = true
-offset_left = 539.0
-offset_top = 284.0
-offset_right = 620.0
-offset_bottom = 333.0
+offset_left = 562.0
+offset_top = 304.0
+offset_right = 643.0
+offset_bottom = 353.0
 text = "Start"
 metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 1126.0
+offset_top = 541.0
+offset_right = 1187.0
+offset_bottom = 587.0
+text = "Credit"
 
 [node name="Sprite0" type="Sprite2D" parent="."]
 position = Vector2(60000000, 30000002)
@@ -34,3 +43,4 @@ scale = Vector2(234375.02, 117187.51)
 texture = ExtResource("2_176dl")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]
