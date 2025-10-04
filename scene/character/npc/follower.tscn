@@ -19,17 +19,31 @@
 [ext_resource type="Texture2D" uid="uid://k2kwihjc8ecg" path="res://ART/Sprites/Follower/follower1/right/sprite_10.png" id="16_l765f"]
 [ext_resource type="Texture2D" uid="uid://o57xpvg6egfm" path="res://ART/Sprites/Follower/follower1/right/sprite_11.png" id="17_7vxe3"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ul7y6"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bc6q4"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mcvl2"]
+radius = 46.52956
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77b8b"]
+radius = 530.0009
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5we18"]
+radius = 64.412735
+
+[sub_resource type="Curve2D" id="Curve2D_tj73j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tj73j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_5we18")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_77b8b")
+"texture": ExtResource("9_etffe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_5we18")
+"texture": ExtResource("3_77b8b")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_ljve4")
@@ -43,21 +57,10 @@ animations = [{
 "texture": ExtResource("5_qhj20")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_g2qad")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_qhj20")
-}, {
-"duration": 1.0,
 "texture": ExtResource("7_duo0x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_qhj20")
+"texture": ExtResource("6_g2qad")
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_0s3ki")
@@ -68,13 +71,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5we18")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_etffe")
-}, {
-"duration": 1.0,
 "texture": ExtResource("10_6x4ro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_v06ma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_178i6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8gjaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g2qad")
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_qhj20")
@@ -83,37 +92,7 @@ animations = [{
 "texture": ExtResource("2_5we18")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_8gjaq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_178i6")
-}, {
-"duration": 1.0,
 "texture": ExtResource("9_etffe")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_qhj20")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_g2qad")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_8gjaq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_178i6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_v06ma")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_g2qad")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_6x4ro")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_v06ma")
 }],
 "loop": true,
 "name": &"idle",
@@ -127,7 +106,7 @@ animations = [{
 "texture": ExtResource("14_6p8df")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_178i6")
+"texture": ExtResource("11_8gjaq")
 }, {
 "duration": 1.0,
 "texture": ExtResource("15_mpdkq")
@@ -144,7 +123,7 @@ animations = [{
 "texture": ExtResource("16_l765f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_6x4ro")
+"texture": ExtResource("13_v06ma")
 }, {
 "duration": 1.0,
 "texture": ExtResource("17_7vxe3")
@@ -154,39 +133,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bc6q4"]
-radius = 14.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mcvl2"]
-radius = 46.52956
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_77b8b"]
-radius = 530.0009
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5we18"]
-radius = 64.412735
-
-[sub_resource type="Curve2D" id="Curve2D_tj73j"]
-
 [node name="Follower" type="CharacterBody2D"]
 position = Vector2(129, 31)
 script = ExtResource("1_7d8lw")
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.6250019, -1.25)
-scale = Vector2(1, 0.891)
-sprite_frames = SubResource("SpriteFrames_ul7y6")
-animation = &"back_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.6293945e-06, 0)
 shape = SubResource("CircleShape2D_bc6q4")
 
 [node name="ChatDetection" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
-visible = false
 shape = SubResource("CircleShape2D_mcvl2")
 
 [node name="Proximity" type="Area2D" parent="."]
@@ -217,11 +174,17 @@ curve = SubResource("Curve2D_tj73j")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tj73j")
+animation = &"idle"
+
 [connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]
 [connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]
 [connection signal="area_exited" from="ChatDetection" to="." method="_on_chat_detection_area_exited"]
 [connection signal="body_entered" from="ChatDetection" to="." method="_on_chat_detection_body_entered"]
 [connection signal="body_exited" from="ChatDetection" to="." method="_on_chat_detection_body_exited"]
+[connection signal="mouse_entered" from="ChatDetection" to="." method="_on_chat_detection_mouse_entered"]
+[connection signal="mouse_exited" from="ChatDetection" to="." method="_on_chat_detection_mouse_exited"]
 [connection signal="area_entered" from="Proximity" to="." method="_on_proximity_area_entered"]
 [connection signal="body_entered" from="Proximity" to="." method="_on_proximity_body_entered"]
 [connection signal="body_entered" from="ProximityTooClose" to="." method="_on_proximity_too_close_body_entered"]
