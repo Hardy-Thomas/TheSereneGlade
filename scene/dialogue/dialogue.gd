@@ -36,10 +36,11 @@ func _input(event: InputEvent) -> void:
 		return
 	if !get_parent().player_in_chat_zone:
 		return
-	if event.is_action_released("ui_accept") : #FUCK IDK why i am this bad but well it is workish
+	if (event.is_action_released("ui_accept")) || ( Input.is_action_just_pressed("clicked") && get_parent().is_mouse): #FUCK IDK why i am this bad but well it is workish
 		next_script()
 		can_accept_input = false   # on bloque l'input
 		$Timer.start(1)          # on lance le timer (demi-seconde)
+	
 
 		
 func next_script():

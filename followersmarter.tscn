@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b08wqhlwihpsu"]
+[gd_scene load_steps=25 format=3 uid="uid://b08wqhlwihpsu"]
 
 [ext_resource type="Script" uid="uid://dyuvlx53ov63g" path="res://follower_smarter.gd" id="1_mk38w"]
 [ext_resource type="Texture2D" uid="uid://b7jlunphmp7rv" path="res://ART/Sprites/Follower/follower1/back/sprite_12.png" id="2_xv4ud"]
@@ -166,11 +166,112 @@ radius = 530.0009
 [sub_resource type="CircleShape2D" id="CircleShape2D_5we18"]
 radius = 64.412735
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_mk38w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xv4ud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b38md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h44rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d5ebj")
+}],
+"loop": true,
+"name": &"back_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_d17nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cncmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kndoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hxrql")
+}],
+"loop": true,
+"name": &"front_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rk2tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k20bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tfy0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_l6kh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kndoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d17nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xv4ud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b38md")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_tfy0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xok4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_l6kh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j3j7b")
+}],
+"loop": true,
+"name": &"left_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rk2tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jemva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k20bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_cd3tj")
+}],
+"loop": true,
+"name": &"right_walk",
+"speed": 5.0
+}]
+
 [node name="Follower" type="CharacterBody2D"]
 position = Vector2(129, 31)
 script = ExtResource("1_mk38w")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-0.6250019, -1.25)
 scale = Vector2(1, 0.891)
 sprite_frames = SubResource("SpriteFrames_ul7y6")
@@ -181,18 +282,19 @@ position = Vector2(-7.6293945e-06, 0)
 shape = SubResource("CircleShape2D_bc6q4")
 
 [node name="ChatDetection" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
-visible = false
 shape = SubResource("CircleShape2D_mcvl2")
 
 [node name="Proximity" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2Dfine" type="CollisionShape2D" parent="Proximity"]
+visible = false
 shape = SubResource("CircleShape2D_77b8b")
 
 [node name="ProximityTooClose" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2Dclose" type="CollisionShape2D" parent="ProximityTooClose"]
 shape = SubResource("CircleShape2D_5we18")
@@ -212,11 +314,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mk38w")
+animation = &"idle"
+
 [connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]
 [connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]
 [connection signal="area_exited" from="ChatDetection" to="." method="_on_chat_detection_area_exited"]
 [connection signal="body_entered" from="ChatDetection" to="." method="_on_chat_detection_body_entered"]
 [connection signal="body_exited" from="ChatDetection" to="." method="_on_chat_detection_body_exited"]
+[connection signal="mouse_entered" from="ChatDetection" to="." method="_on_chat_detection_mouse_entered"]
+[connection signal="mouse_exited" from="ChatDetection" to="." method="_on_chat_detection_mouse_exited"]
 [connection signal="area_entered" from="Proximity" to="." method="_on_proximity_area_entered"]
 [connection signal="body_entered" from="Proximity" to="." method="_on_proximity_body_entered"]
 [connection signal="body_entered" from="ProximityTooClose" to="." method="_on_proximity_too_close_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://7q4tqo0mblic"]
+[gd_scene load_steps=19 format=3 uid="uid://7q4tqo0mblic"]
 
 [ext_resource type="Script" uid="uid://bcr5sryin7daw" path="res://scene/character/player/player.gd" id="1_urp6f"]
 [ext_resource type="Texture2D" uid="uid://bumrti78qb6ck" path="res://ART/Sprites/MC/OverWorldMCAnimation/Down/sprite_00.png" id="2_bwjto"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cy2hlv6f3jlds" path="res://ART/Sprites/MC/OverWorldMCAnimation/Up/sprite_10.png" id="12_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://chix0l6avn0v5" path="res://ART/Sprites/MC/OverWorldMCAnimation/Up/sprite_11.png" id="13_jm5j8"]
 [ext_resource type="Script" uid="uid://byvi4l6gcp8nu" path="res://scene/camera/camera_2d.gd" id="14_bwjto"]
+[ext_resource type="Texture2D" uid="uid://biykapv3wkbna" path="res://ART/Sprites/MC/OverWorldMCAnimation/Death/death.png" id="14_jxknt"]
 [ext_resource type="PackedScene" uid="uid://bf4vmbtn5o3tt" path="res://Cursor.tscn" id="15_3t26f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7hik5"]
@@ -85,6 +86,14 @@ animations = [{
 "loop": true,
 "name": &"UpWalk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_jxknt")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtqh7"]
@@ -97,7 +106,7 @@ speed = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7hik5")
-animation = &"UpWalk"
+animation = &"DownWalk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 shape = SubResource("RectangleShape2D_qtqh7")
@@ -113,3 +122,7 @@ script = ExtResource("14_bwjto")
 target = NodePath("..")
 
 [node name="Node" parent="." instance=ExtResource("15_3t26f")]
+
+[node name="TimerDeath" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerDeath" to="." method="_on_timer_death_timeout"]

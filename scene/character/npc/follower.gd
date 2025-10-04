@@ -28,6 +28,11 @@ func _process(delta):
 		$dialogue.start()
 		is_roaming =false
 		is_chatting = true
+	if Input.is_action_just_pressed("clicked") && is_mouse:
+		$dialogue.start()
+		is_roaming =false
+		is_chatting = true	
+	
 func _physics_process(delta):
 	# gestion du déplacement et des collisions
 	velocity = Vector2.ZERO
@@ -102,3 +107,12 @@ func _on_proximity_too_close_body_exited(body: Node2D) -> void:
 		player = body
 		player_in_chat_zone = true
 		is_following = follow_player_when_near
+
+
+func _on_chat_detection_mouse_entered() -> void:
+	is_mouse =true
+	print('cacas')
+
+
+func _on_chat_detection_mouse_exited() -> void:
+	is_mouse =false

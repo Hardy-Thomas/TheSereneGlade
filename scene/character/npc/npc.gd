@@ -15,7 +15,7 @@ var start_pos
 var is_roaming = true 
 var is_chatting = false
 var is_following = false
-
+var is_mouse = false
 var player
 var player_in_chat_zone = false
 
@@ -47,6 +47,11 @@ func _process(delta: float) -> void:
 				move(delta)
 	if Input.is_action_just_pressed("ui_accept"):
 
+		$dialogue.start()
+		is_roaming =false
+		is_chatting = true
+
+	if Input.is_action_just_pressed("clicked") && is_mouse:
 		$dialogue.start()
 		is_roaming =false
 		is_chatting = true
@@ -89,3 +94,11 @@ func _on_dialogue_dialogue_finished() -> void:
 	$dialogue.dialogue_is_active = false
 	is_chatting = false 
 	is_roaming = true
+
+
+func _on_chat_detection_mouse_shape_entered(shape_idx: int) -> void:
+	is_mouse =true
+
+
+func _on_chat_detection_mouse_shape_exited(shape_idx: int) -> void:
+	is_mouse=false
