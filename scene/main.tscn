@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://310a7mbtjyf7"]
+[gd_scene load_steps=37 format=4 uid="uid://310a7mbtjyf7"]
 
 [ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://scene/character/player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://tu01wpcnie2h" path="res://scene/main.gd" id="1_lquwl"]
@@ -694,5 +694,7 @@ tile_set = SubResource("TileSet_kek77")
 
 [node name="Follower" parent="." instance=ExtResource("16_jcbur")]
 position = Vector2(514, 369)
+[node name="Key" parent="." instance=ExtResource("18_0vlqb")]
+position = Vector2(911, 22)
 
 [connection signal="body_entered" from="porteCript" to="porteCript" method="_on_body_entered"]
