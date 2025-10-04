@@ -53,7 +53,8 @@ func _process(delta):
 			# Pas de mouvement → animation arrêtée
 			$AnimatedSprite2D.stop()
 		if Input.is_action_just_pressed("ui_accept"):
-			die()
+			#die()
+			pass
 		if Health ==0 : 
 			die()
 func die() -> void:
