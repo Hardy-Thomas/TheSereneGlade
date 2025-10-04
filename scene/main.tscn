@@ -1,10 +1,10 @@
 [gd_scene load_steps=35 format=4 uid="uid://310a7mbtjyf7"]
 
-[ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://tu01wpcnie2h" path="res://main.gd" id="1_lquwl"]
-[ext_resource type="PackedScene" uid="uid://dd8ikwg8yprw3" path="res://npc.tscn" id="2_7mycd"]
-[ext_resource type="Script" uid="uid://bxenimt2u26kf" path="res://canvas_layer.gd" id="2_272bh"]
-[ext_resource type="Script" uid="uid://csb67kau0h6em" path="res://porte_cript.gd" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://scene/character/player/player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://tu01wpcnie2h" path="res://scene/main.gd" id="1_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dd8ikwg8yprw3" path="res://scene/character/npc/npc.tscn" id="2_7mycd"]
+[ext_resource type="Script" uid="uid://bxenimt2u26kf" path="res://scene/camera/canvas_layer.gd" id="2_272bh"]
+[ext_resource type="Script" uid="uid://csb67kau0h6em" path="res://scene/levels/crypt/porte_cript.gd" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bvacphdrb7cq5" path="res://ART/Props/crypt_ouside.png" id="6_5vw27"]
 [ext_resource type="Texture2D" uid="uid://cotogr5ldkjhl" path="res://ART/Props/sprite_Gate1.png" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://biqy8flmklavc" path="res://ART/Props/sprite_Gate0.png" id="8_5vw27"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://eic5n0kjxkn5" path="res://ART/Props/tree2_1.png" id="13_yaehf"]
 [ext_resource type="Texture2D" uid="uid://ckp6a0stf7vvb" path="res://ART/Props/tree1_1.png" id="14_074og"]
 [ext_resource type="Texture2D" uid="uid://dq3eigp5wiud1" path="res://ART/Props/tombstone.png" id="15_2cqfq"]
-[ext_resource type="PackedScene" uid="uid://bo5gqw1rdlqq4" path="res://follower.tscn" id="17_yaehf"]
+[ext_resource type="PackedScene" uid="uid://bo5gqw1rdlqq4" path="res://scene/character/npc/follower.tscn" id="17_yaehf"]
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 length = 0.001

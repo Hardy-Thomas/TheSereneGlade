@@ -13,13 +13,13 @@ config_version=5
 config/name="TheSereneGlade"
 run/main_scene="uid://7q4tqo0mblic"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://scene/icon.svg"
 
 [autoload]
 
-InventoryUi="*res://inventory_ui.tscn"
-SoundManager="*res://sound_manager.tscn"
-Inventory="*res://inventory.tscn"
+InventoryUi="*res://scene/environement/inventory_ui.tscn"
+SoundManager="*res://scene/environement/sound_manager.tscn"
+Inventory="*res://scene/environement/inventory.tscn"
 
 [display]
 
