@@ -4,6 +4,7 @@ signal dialogue_exited
 
 
 @export var  speed = 30.0
+
 var current_state = IDLE
 
 
@@ -68,7 +69,7 @@ func move(delta):
 
 func _on_chat_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		print("IN")
+
 		player =body 
 		player_in_chat_zone = true
 func _on_chat_detection_body_exited(body: Node2D) -> void:

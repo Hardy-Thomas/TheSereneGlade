@@ -59,10 +59,11 @@ shape = SubResource("CircleShape2D_mcvl2")
 autostart = true
 
 [node name="dialogue" parent="." instance=ExtResource("3_kh24r")]
-offset_left = -234.0
-offset_top = -290.0
-offset_right = -112.0
-offset_bottom = -243.0
+offset_left = -60.0
+offset_top = -91.0
+offset_right = 62.0
+offset_bottom = -44.0
+d_file = "res://dialogue/Gravekeeper_dialogue.json"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]

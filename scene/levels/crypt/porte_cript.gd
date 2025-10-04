@@ -17,4 +17,4 @@ func _on_body_entered(body: Node2D) -> void:
 		#fade_timer.start()
 		#fade_timer.timeout.connect(func(): 
 		var fade_manager = get_tree().get_first_node_in_group("FadeInOut")
-		fade_manager.fade_to_scene("res://crypt.tscn")
+		fade_manager.fade_to_scene("res://scene/levels/title/title_scene.tscn")

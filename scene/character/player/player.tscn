@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://7q4tqo0mblic"]
+[gd_scene load_steps=18 format=3 uid="uid://7q4tqo0mblic"]
 
 [ext_resource type="Script" uid="uid://bcr5sryin7daw" path="res://scene/character/player/player.gd" id="1_urp6f"]
 [ext_resource type="Texture2D" uid="uid://bumrti78qb6ck" path="res://ART/Sprites/MC/OverWorldMCAnimation/Down/sprite_00.png" id="2_bwjto"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cy2hlv6f3jlds" path="res://ART/Sprites/MC/OverWorldMCAnimation/Up/sprite_10.png" id="12_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://chix0l6avn0v5" path="res://ART/Sprites/MC/OverWorldMCAnimation/Up/sprite_11.png" id="13_jm5j8"]
 [ext_resource type="Script" uid="uid://byvi4l6gcp8nu" path="res://scene/camera/camera_2d.gd" id="14_bwjto"]
+[ext_resource type="PackedScene" uid="uid://bf4vmbtn5o3tt" path="res://Cursor.tscn" id="15_3t26f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7hik5"]
 animations = [{
@@ -110,3 +111,5 @@ limit_bottom = 600
 limit_smoothed = true
 script = ExtResource("14_bwjto")
 target = NodePath("..")
+
+[node name="Node" parent="." instance=ExtResource("15_3t26f")]
