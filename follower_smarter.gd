@@ -79,23 +79,19 @@ func targeting():
 # --- Animation ---
 
 func _play_walk_animation(direction: Vector2) -> void:
-	print("feur")
-	anim_sprite.play("idle")
-	# On compare la direction dominante
-	#if abs(direction.x) > abs(direction.y):
-		#if direction.x > 0:
-			#$AnimatedSprite2D2.play("right_walk")
-		#else:
-			#$AnimatedSprite2D2.play("left_walk")
-	#else:
-		#if direction.y > 0:
-			#
-		#else:
-			#$AnimatedSprite2D2.play("back_walk")
+	if abs(direction.x) > abs(direction.y):
+		if direction.x > 0:
+			$AnimatedSprite2D2.play("right_walk")
+		else:
+			$AnimatedSprite2D2.play("left_walk")
+	else:
+		if direction.y > 0:
+			$AnimatedSprite2D2.play("front_walk")
+		else:
+			$AnimatedSprite2D2.play("back_walk")
 
 func _play_idle_animation(direction: Vector2) -> void:
-	anim_sprite.play("idle")
-
+	$AnimatedSprite2D2.play("idle")
 func _on_TimerIdle_timeout() -> void:
 	idle = true
 	_play_idle_animation(last_direction)

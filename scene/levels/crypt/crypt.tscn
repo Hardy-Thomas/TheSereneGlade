@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://nq6125qxrgv4"]
+[gd_scene load_steps=27 format=4 uid="uid://nq6125qxrgv4"]
 
 [ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://scene/character/player/player.tscn" id="1_ihp3y"]
 [ext_resource type="PackedScene" uid="uid://dd8ikwg8yprw3" path="res://scene/character/npc/npc.tscn" id="1_tibry"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://ckp6a0stf7vvb" path="res://ART/Props/tree1_1.png" id="11_j57cw"]
 [ext_resource type="Texture2D" uid="uid://bvacphdrb7cq5" path="res://ART/Props/crypt_ouside.png" id="12_wycfd"]
 [ext_resource type="Texture2D" uid="uid://dq3eigp5wiud1" path="res://ART/Props/tombstone.png" id="13_ipc8b"]
-[ext_resource type="PackedScene" uid="uid://clmgt5gmw677q" path="res://scene/character/npc/Ennemy/Ennemy.tscn" id="14_4hduv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1b7ql"]
 vertices = PackedVector2Array(474, 474, 726, 458, 762, 458, 458, 490, 106, 26, 141.38281, 18.523438, 1160.1875, 9.09375, 819.34375, 198, 797.3203, 198, 75.67969, 111.21094, 65.24219, 96.39844, 58, 42, 781.39844, 207.1875, 218, 202, 218, 172.59375, -8.2890625, 19.898438, 13.9296875, 19.6875, 4.2109375, 29.859375, 29.351563, 573.1719, 9.3984375, 42, 842, 250, 842, 220.59375, 1171.7891, 594.7969, 778, 442, 778, 412.59375, 767.8125, 399.3828, 774, 221.57813, 755.34375, 390, 826, 266, 726, 442, 474, 444.59375, 710, 442, 70, 442, 86, 442, 86, 458, 406, 474, 122, 458, 122, 442, 138, 442, 406, 445.57813, 422, 474, 422, 490, 458, 474, 762, 442, 58, 26, 93.32031, 390, 150, 202, 166, 202, 166, 218, 115.34375, 390, 202, 218, 202, 202, 717.39844, 399.1875, 710, 413.57813, 463.8125, 431.3828, 451.34375, 422, 733.3203, 390, 774, 250, 790, 250, 790, 266, 826, 250, 106, 18.84375, 49.039063, 84.28906, 38, 89.828125, 38, 122, 413.39844, 431.1875, 138, 412.59375, 70.078125, 122, 70, 413.57813, 831.8125, 207.38281, 195.34375, 150, 429.3203, 422, 127.8125, 399.3828, 207.8125, 159.38281, 77.39844, 399.1875, 150, 173.57813, 173.32031, 150, 157.39844, 159.1875)
@@ -598,8 +597,6 @@ sources/9 = SubResource("TileSetAtlasSource_qqmic")
 
 [node name="Cript" type="Node2D"]
 
-[node name="Follower" parent="." instance=ExtResource("1_xo5qf")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 2
 
@@ -618,23 +615,12 @@ position = Vector2(599, 298)
 position = Vector2(416, 321)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-3, 1)
 navigation_polygon = SubResource("NavigationPolygon_1b7ql")
 
 [node name="Decor2" type="TileMapLayer" parent="NavigationRegion2D"]
 tile_map_data = PackedByteArray("AAAbABsABAABAAAAAAAcABsABAACAAAAAAAdABsAAgANABkAAAAeABsAAgAOABkAAAAEAAAABAABAAEAAAAFAAAABAACAAEAAAAJAP//BAABAAEAAAADAAYABQACAAAAAAABAAEABwAAAAAAAAACAAEABwABAAAAAABKAAMABAACAAAAAABKAAQABAACAAEAAAAFABkABAAAAAAAAAAFABoABAAAAAEAAAAFABsABAAAAAIAAAAGABkABAABAAAAAAAGABoABAABAAEAAAAGABsABAABAAIAAAAHABkABAACAAAAAAAHABoABAACAAEAAAAHABsABAACAAIAAAAKAAoABAAAAAAAAAAKAAsABAAAAAEAAAAKAAwABAAAAAIAAAALAAoABAABAAAAAAALAAsABAABAAEAAAALAAwABAABAAIAAAAMAAoABAACAAAAAAAMAAsABAACAAEAAAAMAAwABAACAAIAAAAtABkABAAAAAAAAAAtABoABAAAAAEAAAAtABsABAAAAAIAAAAuABkABAABAAAAAAAuABoABAABAAEAAAAuABsABAABAAIAAAAvABkABAACAAAAAAAvABoABAACAAEAAAAvABsABAACAAIAAAAxAA0ABAAAAAAAAAAxAA4ABAAAAAEAAAAxAA8ABAAAAAIAAAAyAA0ABAABAAAAAAAyAA4ABAABAAEAAAAyAA8ABAABAAIAAAAzAA0ABAACAAAAAAAzAA4ABAACAAEAAAAzAA8ABAACAAIAAAAaABsABAAAAAAAAAAaABwABAAAAAEAAAAaAB0ABAAAAAIAAAAbABwABAABAAEAAAAbAB0ABAABAAIAAAAcABwABAACAAEAAAAcAB0ABAACAAIAAAA=")
 tile_set = SubResource("TileSet_28kig")
 
-[node name="Follower2" parent="." instance=ExtResource("1_xo5qf")]
-position = Vector2(1058, 376)
-
-[node name="Follower3" parent="." instance=ExtResource("1_xo5qf")]
-position = Vector2(160, 664)
-
-[node name="Follower4" parent="." instance=ExtResource("1_xo5qf")]
-position = Vector2(885, 169)
-
-[node name="Follower5" parent="." instance=ExtResource("1_xo5qf")]
-position = Vector2(720, 176)
-
-[node name="Ennemy" parent="." instance=ExtResource("14_4hduv")]
-position = Vector2(545, 96)
+[node name="Follower" parent="." instance=ExtResource("1_xo5qf")]
+position = Vector2(1024, 330)
