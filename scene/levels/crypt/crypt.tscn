@@ -987,7 +987,7 @@ texture = ExtResource("2_0up7y")
 show_behind_parent = true
 position = Vector2(597, 279)
 sprite_frames = SubResource("SpriteFrames_4hduv")
-frame_progress = 0.78344417
+frame_progress = 0.5398639
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(367, 240)
