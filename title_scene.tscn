@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdg4tsa7gd0di"]
 
 [ext_resource type="Script" uid="uid://bqvy7ocmdgtp8" path="res://title_scene.gd" id="1_wkkv4"]
-[ext_resource type="Texture2D" uid="uid://dmm6jyekufl1" path="res://ART/Props/sprite_0.png" id="2_176dl"]
+[ext_resource type="Texture2D" uid="uid://c01rh8y55tkcy" path="res://ART/Props/BG/sprite_0.png" id="2_176dl"]
 
 [node name="TitleScene" type="Node2D"]
 scale = Vector2(1e-05, 1e-05)
@@ -13,6 +13,7 @@ process_priority = 1
 [node name="Label" type="Label" parent="CanvasLayer"]
 top_level = true
 anchors_preset = -1
+anchor_left = -0.013333334
 anchor_right = -0.013333334
 offset_left = 580.0
 offset_top = 256.0
@@ -38,8 +39,8 @@ offset_bottom = 587.0
 text = "Credit"
 
 [node name="Sprite0" type="Sprite2D" parent="."]
-position = Vector2(60000000, 30000002)
-scale = Vector2(234375.02, 117187.51)
+position = Vector2(60350004, 30150002)
+scale = Vector2(98764.42, 100000)
 texture = ExtResource("2_176dl")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

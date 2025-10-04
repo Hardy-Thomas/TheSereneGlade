@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bo5gqw1rdlqq4"]
+[gd_scene load_steps=24 format=3 uid="uid://bo5gqw1rdlqq4"]
 
 [ext_resource type="Script" uid="uid://nxm2scnkhgqe" path="res://follower.gd" id="1_7d8lw"]
 [ext_resource type="Texture2D" uid="uid://b7jlunphmp7rv" path="res://ART/Sprites/Follower/follower1/back/sprite_12.png" id="2_5we18"]
@@ -161,7 +161,10 @@ radius = 14.0
 radius = 46.52956
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_77b8b"]
-radius = 333.006
+radius = 530.0009
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5we18"]
+radius = 64.412735
 
 [node name="Follower" type="CharacterBody2D"]
 position = Vector2(129, 31)
@@ -174,7 +177,6 @@ sprite_frames = SubResource("SpriteFrames_ul7y6")
 animation = &"back_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-7.6293945e-06, 0)
 shape = SubResource("CircleShape2D_bc6q4")
 
@@ -187,14 +189,13 @@ shape = SubResource("CircleShape2D_mcvl2")
 
 [node name="Proximity" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Proximity"]
-visible = false
+[node name="CollisionShape2Dfine" type="CollisionShape2D" parent="Proximity"]
 shape = SubResource("CircleShape2D_77b8b")
 
 [node name="ProximityTooClose" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityTooClose"]
-shape = SubResource("CircleShape2D_77b8b")
+[node name="CollisionShape2Dclose" type="CollisionShape2D" parent="ProximityTooClose"]
+shape = SubResource("CircleShape2D_5we18")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -214,6 +215,9 @@ metadata/_edit_use_anchors_ = true
 [connection signal="body_entered" from="ChatDetection" to="." method="_on_chat_detection_body_entered"]
 [connection signal="body_exited" from="ChatDetection" to="." method="_on_chat_detection_body_exited"]
 [connection signal="area_entered" from="Proximity" to="." method="_on_proximity_area_entered"]
+[connection signal="body_entered" from="Proximity" to="." method="_on_proximity_body_entered"]
+[connection signal="body_entered" from="ProximityTooClose" to="." method="_on_proximity_too_close_body_entered"]
+[connection signal="body_exited" from="ProximityTooClose" to="." method="_on_proximity_too_close_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="dialogue_finished" from="dialogue" to="." method="_on_dialogue_dialogue_finished"]
 [connection signal="timeout" from="TimerIdle" to="." method="_on_timer_idle_timeout"]

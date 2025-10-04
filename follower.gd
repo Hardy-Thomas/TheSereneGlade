@@ -55,10 +55,7 @@ func _on_TimerIdle_timeout() -> void:
 	$AnimatedSprite2D2.play("idle")
 
 func _on_chat_detection_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		player = body
-		player_in_chat_zone = true
-		is_following = follow_player_when_near
+	return
 
 func _on_chat_detection_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
@@ -67,6 +64,25 @@ func _on_chat_detection_body_exited(body: Node2D) -> void:
 		emit_signal("dialogue_exited")
 
 
-func _on_proximity_area_entered(body: Node2D) -> void:
+
+
+
+func _on_proximity_too_close_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		print("FERME BIEN TA GUEUELE")
+		player_in_chat_zone = false
+		is_following = false
+		emit_signal("dialogue_exited")
+
+
+func _on_proximity_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		player = body
+		player_in_chat_zone = true
+		is_following = follow_player_when_near
+
+
+func _on_proximity_too_close_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		player = body
+		player_in_chat_zone = true
+		is_following = follow_player_when_near

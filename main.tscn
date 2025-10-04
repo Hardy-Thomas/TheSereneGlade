@@ -663,7 +663,6 @@ libraries = {
 }
 
 [node name="Npc" parent="." instance=ExtResource("2_7mycd")]
-visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(613, 556)
