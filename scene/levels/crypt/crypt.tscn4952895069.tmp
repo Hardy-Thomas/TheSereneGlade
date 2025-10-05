@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://nq6125qxrgv4"]
+[gd_scene load_steps=22 format=4 uid="uid://nq6125qxrgv4"]
 
 [ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://scene/character/player/player.tscn" id="1_ihp3y"]
 [ext_resource type="Script" uid="uid://cl4lxifwtsrml" path="res://scene/levels/crypt/crypt.gd" id="1_j5ywv"]
@@ -9,8 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://diklt20341vfn" path="res://ART/Props/crypte/lake/sprite_1.png" id="5_6qxfc"]
 [ext_resource type="Texture2D" uid="uid://djwgw6aupcio1" path="res://ART/Props/crypte/lake/sprite_2.png" id="6_xixhc"]
 [ext_resource type="Script" uid="uid://lavr2oxpghii" path="res://scene/levels/crypt/output_port.gd" id="9_xixhc"]
-[ext_resource type="PackedScene" uid="uid://b08wqhlwihpsu" path="res://followersmarter.tscn" id="10_xixhc"]
-[ext_resource type="PackedScene" uid="uid://cwm7o1bb31tkq" path="res://enemy.tscn" id="11_tt6x2"]
+[ext_resource type="PackedScene" uid="uid://cwm7o1bb31tkq" path="res://enemy.tscn" id="10_xixhc"]
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 length = 0.001
@@ -1025,10 +1024,7 @@ navigation_polygon = SubResource("NavigationPolygon_v8txl")
 tile_map_data = PackedByteArray("AAAgAA4AAQASAAAAAAAhAA4AAQATAAAAAAAiAA4AAQAUAAAAAAAjAA4AAQAVAAAAAAAkAA4AAQAWAAAAAAAlAA4AAQAXAAAAAAAmAA4AAQAYAAAAAAAnAA4AAQAZAAAAAAAoAA4AAQAaAAAAAAApAA4AAQAbAAAAAAAqAA4AAQAcAAAAAAArAA4AAQAdAAAAAAArAA8AAQAdAAEAAAAsAA8AAQAeAAEAAAAtAA8AAQAfAAEAAAAsAA4AAQAeAAAAAAAsABAAAQAeAAIAAAAtABEAAQAfAAMAAAAuABEAAQAgAAMAAAAuABAAAQAgAAIAAAAtABAAAQAfAAIAAAAsABEAAQAeAAMAAAAsABIAAQAeAAQAAAAuABIAAQAgAAQAAAArABEAAQAdAAMAAAArABIAAQAdAAQAAAAtABIAAQAfAAQAAAAqABMAAQAcAAUAAAApABMAAQAbAAUAAAAoABMAAQAaAAUAAAAqABIAAQAcAAQAAAAmABQAAQAYAAYAAAApABIAAQAbAAQAAAAnABMAAQAZAAUAAAAlABQAAQAXAAYAAAAkABQAAQAWAAYAAAAlABMAAQAXAAUAAAAmABMAAQAYAAUAAAAoABIAAQAaAAQAAAAqABEAAQAcAAMAAAAnABIAAQAZAAQAAAApABEAAQAbAAMAAAAoABEAAQAaAAMAAAAnABEAAQAZAAMAAAAmABIAAQAYAAQAAAAlABIAAQAXAAQAAAAkABMAAQAWAAUAAAArABAAAQAdAAIAAAAqABAAAQAcAAIAAAAkABIAAQAWAAQAAAAmABEAAQAYAAMAAAApABAAAQAbAAIAAAAoABAAAQAaAAIAAAAqAA8AAQAcAAEAAAAnABAAAQAZAAIAAAAlABEAAQAXAAMAAAAkABEAAQAWAAMAAAAmABAAAQAYAAIAAAAoAA8AAQAaAAEAAAAlABAAAQAXAAIAAAAkABAAAQAWAAIAAAAjABAAAQAVAAIAAAAiABAAAQAUAAIAAAAhABAAAQATAAIAAAAhAA8AAQATAAEAAAAgAA8AAQASAAEAAAAgABAAAQASAAIAAAAgABEAAQASAAMAAAAhABEAAQATAAMAAAAiABEAAQAUAAMAAAAjABEAAQAVAAMAAAAiAA8AAQAUAAEAAAAjAA8AAQAVAAEAAAAkAA8AAQAWAAEAAAAlAA8AAQAXAAEAAAAmAA8AAQAYAAEAAAApAA8AAQAbAAEAAAAnAA8AAQAZAAEAAAA=")
 tile_set = SubResource("TileSet_1b7ql")
 
-[node name="Enemy" parent="." instance=ExtResource("11_tt6x2")]
-position = Vector2(757, 361)
-
-[node name="Follower" parent="." instance=ExtResource("10_xixhc")]
-position = Vector2(478, 399)
+[node name="Enemy" parent="." instance=ExtResource("10_xixhc")]
+position = Vector2(293, 340)
 
 [connection signal="body_entered" from="OutputPort" to="OutputPort" method="_on_body_entered"]

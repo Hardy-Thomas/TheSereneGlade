@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://310a7mbtjyf7"]
+[gd_scene load_steps=36 format=4 uid="uid://310a7mbtjyf7"]
 
 [ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://scene/character/player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://tu01wpcnie2h" path="res://scene/main.gd" id="1_lquwl"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://dq3eigp5wiud1" path="res://ART/Props/tombstone.png" id="15_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://b08wqhlwihpsu" path="res://followersmarter.tscn" id="16_jcbur"]
 [ext_resource type="PackedScene" uid="uid://bhv51jefp01cp" path="res://scene/environement/item/key.tscn" id="17_smf0o"]
-[ext_resource type="PackedScene" uid="uid://dr4jim3mut16h" path="res://scene/levels/animation/portail.tscn" id="18_tv8i1"]
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 length = 0.001
@@ -695,11 +694,7 @@ tile_map_data = PackedByteArray("AAAiABwAAAAAAAAAAAAiAB0AAAAAAAEAAAAiAB8AAAAAAAM
 tile_set = SubResource("TileSet_kek77")
 
 [node name="Key" parent="." instance=ExtResource("17_smf0o")]
-position = Vector2(101, 543)
-
-[node name="Portail" parent="." instance=ExtResource("18_tv8i1")]
-top_level = true
-position = Vector2(608, 479)
+position = Vector2(783, 543)
 
 [node name="Follower" parent="." instance=ExtResource("16_jcbur")]
 position = Vector2(424, 334)

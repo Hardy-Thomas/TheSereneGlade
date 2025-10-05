@@ -1,6 +1,5 @@
 extends Npc
-
-
+class_name FollowerSmarter
 @export var follow_player_when_near := true
 @export var follow_distance := 4.0
 @export var speed2 := 100
@@ -10,7 +9,7 @@ extends Npc
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var res_timer: Timer = $ResTimer
-@onready var label: RichTextLabel = 
+@onready var label: RichTextLabel = $RichTextLabel
 @onready var attack_sprite: AnimatedSprite2D = $AttackSprite2D  # sprite d’attaque séparé
 
 var target: Node2D = null
@@ -18,7 +17,7 @@ var last_direction := Vector2.ZERO
 var idle := false
 var is_ko := false
 
-var attack_mode := false   # <-- NOUVEAU : true si le follower doit attaquer un ennemi
+var attack_mode := false   # true si le follower doit attaquer un ennemi
 
 func _ready() -> void:
 	label.text = ""
@@ -48,6 +47,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta):
 	if not is_ko and target and is_following:
+		
 		if not is_instance_valid(target):
 			targeting()
 			return
@@ -72,20 +72,23 @@ func _physics_process(delta):
 # --- Gestion du ciblage ---
 func targeting():
 	if attack_mode:
-		# On cherche uniquement les ennemis
+		# Mode attaque → chercher uniquement les ennemis
 		var enemies = get_tree().get_nodes_in_group("Enemy")
 		if enemies.size() > 0:
 			target = enemies[0]
+			is_following = true
 		else:
 			target = null
 	else:
 		# Mode normal → suivre le joueur
 		var players = get_tree().get_nodes_in_group("Player")
 		if players.size() > 0:
-			target = players[0]
-			player = target
+			player = players[0]
+			target = player
+			is_following = true
 		else:
 			target = null
+			is_following = false
 
 # --- Animations ---
 func _play_walk_animation(direction: Vector2) -> void:
@@ -107,7 +110,6 @@ func _play_idle_animation(direction: Vector2) -> void:
 func ko(duration: float) -> void:
 	if is_ko:
 		return
-
 	is_ko = true
 	is_following = false
 	anim_sprite.play("stun")
@@ -123,6 +125,11 @@ func _on_res_timer_timeout() -> void:
 
 # --- Attaque orientée ---
 func _on_proximity_too_close_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		player = body
+		player_in_chat_zone = true
+		is_following = false
+
 	if attack_mode and body.is_in_group("Enemy"):
 		is_following = false
 		target = body
@@ -130,24 +137,38 @@ func _on_proximity_too_close_body_entered(body: Node2D) -> void:
 		if attack_sprite.has_animation("attack"):
 			attack_sprite.play("attack")
 
+
+func _on_chat_detection_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		player_in_chat_zone = false
+		is_following = false
+		emit_signal("dialogue_exited")
+
+
+func _on_proximity_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		player = body
+		is_following = true
+		
+
+
 func _on_proximity_too_close_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		is_following = true
+		
+
 	if body == target:
 		target = null
 		is_following = follow_player_when_near
-		attack_sprite.stop()
-
+		#attack_sprite.stop()
+	
 func _update_attack_orientation() -> void:
 	if not target or not attack_sprite:
 		return
-
 	var direction = (target.global_position - global_position).normalized()
-	var distance = 20  # distance devant le NPC
+	var distance = 20
 	attack_sprite.position = direction * distance
-
-	if direction.x < 0:
-		attack_sprite.flip_h = true
-	else:
-		attack_sprite.flip_h = false
+	attack_sprite.flip_h = direction.x < 0
 
 # --- Dégâts ---
 func take_damage(damage: int):

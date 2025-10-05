@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://b08wqhlwihpsu"]
 
-[ext_resource type="Script" uid="uid://c1wmegr2p4dbh" path="res://followersmarter.gd" id="1_xv4ud"]
+[ext_resource type="Script" uid="uid://dyuvlx53ov63g" path="res://follower_smarter.gd" id="1_mk38w"]
 [ext_resource type="Texture2D" uid="uid://b7jlunphmp7rv" path="res://ART/Sprites/Follower/follower1/back/sprite_12.png" id="2_xv4ud"]
 [ext_resource type="Texture2D" uid="uid://hcs31ubcos45" path="res://ART/Sprites/Follower/follower1/back/sprite_14.png" id="3_h44rk"]
 [ext_resource type="Texture2D" uid="uid://bt77357wpt13a" path="res://ART/Sprites/Follower/follower1/back/sprite_15.png" id="4_d5ebj"]
@@ -177,7 +177,7 @@ radius = 64.412735
 
 [node name="Follower" type="CharacterBody2D"]
 position = Vector2(129, 31)
-script = ExtResource("1_xv4ud")
+script = ExtResource("1_mk38w")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1.9073486e-06, -1)
@@ -233,8 +233,7 @@ scale = Vector2(0.335, 0.335)
 theme_override_font_sizes/normal_font_size = 31
 text = "66"
 
-[node name="AttackTimer" type="Timer" parent="."]
-
+[connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]
 [connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]
 [connection signal="area_exited" from="ChatDetection" to="." method="_on_chat_detection_area_exited"]
 [connection signal="body_entered" from="ChatDetection" to="." method="_on_chat_detection_body_entered"]
