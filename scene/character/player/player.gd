@@ -6,21 +6,20 @@ signal command_attack
 var screen_size
 var can_move = true
 var attack_order = false
-
 func _ready():
-	screen_size = get_viewport_rect().size
+	screen_size = get_viewport_rect().size #get the size of my screen bc the tuto said so
+
+
+
 
 func _process(delta):
-	if Input.is_action_just_pressed("clicked"):
-		die()
-	# --- Activation mode attaque ---
+	Global.attack_order = self.attack_order
 	if Input.is_action_just_pressed("attack_order"):
 		attack_order = true
-		print("Mode attaque :", attack_order)
-		_start_attack_mode()
-
-	# --- Déplacements ---
-	velocity = Vector2.ZERO
+	if Input.is_action_just_released("attack_order"):
+		attack_order = false		
+	velocity = Vector2.ZERO # The player's movement vector.
+	move_and_slide()
 	if can_move:
 		if Input.is_action_pressed("move_right"):
 			velocity.x += 1
@@ -48,14 +47,13 @@ func _update_animation():
 		if velocity.x > 0:
 			$AnimatedSprite2D.animation = "RightWalk"
 		else:
-			$AnimatedSprite2D.animation = "LeftWalk"
-	else:
-		if velocity.y > 0:
-			$AnimatedSprite2D.animation = "DownWalk"
-		else:
-			$AnimatedSprite2D.animation = "UpWalk"
-	$AnimatedSprite2D.play()
-
+			# Pas de mouvement → animation arrêtée
+			$AnimatedSprite2D.stop()
+		if Input.is_action_just_pressed("ui_accept"):
+			#die()
+			pass
+		if Health <=0 : 
+			die()
 func die() -> void:
 
 	#$AnimatedSprite2D.animation = "die"
@@ -89,4 +87,8 @@ func _start_attack_mode():
 
 
 func _on_timer_death_timeout() -> void:
-	pass # Replace with function body.
+	$TimerDeath.wait_time = 5 
+	$TimerDeath.start()
+func take_damage(damage : int):
+	print(Health)
+	Health = Health - damage

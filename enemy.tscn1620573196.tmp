@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cnmyy82xbpjtj"]
+[gd_scene load_steps=24 format=3 uid="uid://cnmyy82xbpjtj"]
 
 [ext_resource type="Script" uid="uid://7rx4517k40qt" path="res://enemy.gd" id="1_g2u8i"]
 [ext_resource type="Texture2D" uid="uid://b7jlunphmp7rv" path="res://ART/Sprites/Follower/follower1/back/sprite_12.png" id="2_otto8"]
@@ -18,13 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://k2kwihjc8ecg" path="res://ART/Sprites/Follower/follower1/right/sprite_10.png" id="16_6wg26"]
 [ext_resource type="Texture2D" uid="uid://o57xpvg6egfm" path="res://ART/Sprites/Follower/follower1/right/sprite_11.png" id="17_qskgw"]
 [ext_resource type="PackedScene" uid="uid://c6fjnqiacddbx" path="res://scene/dialogue/dialogue.tscn" id="18_g3onx"]
-[ext_resource type="Texture2D" uid="uid://bfh5yef4uw2aa" path="res://ART/Sprites/Enemy/slime/front_walk/sprite_0.png" id="19_qgdfx"]
-[ext_resource type="Texture2D" uid="uid://4u6x2av5gqua" path="res://ART/Sprites/Enemy/slime/front_walk/sprite_1.png" id="20_qku5p"]
-[ext_resource type="Texture2D" uid="uid://bhftsjmewhsj6" path="res://ART/Sprites/Enemy/slime/back_walk/sprite_5.png" id="21_l1fjw"]
-[ext_resource type="Texture2D" uid="uid://bvh82x55o2lgd" path="res://ART/Sprites/Enemy/slime/front_walk/sprite_2.png" id="22_b5wqg"]
-[ext_resource type="Texture2D" uid="uid://d71qk5ku6q5w" path="res://ART/Sprites/Enemy/slime/front_walk/sprite_6.png" id="23_hgro5"]
-[ext_resource type="Texture2D" uid="uid://cqda5syn75krl" path="res://ART/Sprites/Enemy/slime/right_walk/sprite_4.png" id="24_18rq2"]
-[ext_resource type="Texture2D" uid="uid://dmbtdujyob1d6" path="res://ART/Sprites/Enemy/slime/left_walk/sprite_3.png" id="25_ccdwq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ul7y6"]
 animations = [{
@@ -173,126 +166,24 @@ radius = 530.0009
 [sub_resource type="CircleShape2D" id="CircleShape2D_5we18"]
 radius = 64.412735
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g2u8i"]
-radius = 16.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_otto8"]
-radius = 46.09772
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0jgdh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("19_qgdfx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_qku5p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_l1fjw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_qku5p")
-}],
-"loop": true,
-"name": &"back_walk",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("20_qku5p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_b5wqg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_hgro5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_b5wqg")
-}],
-"loop": true,
-"name": &"front_walk",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("19_qgdfx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_qku5p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_b5wqg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_hgro5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_b5wqg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_qku5p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_qgdfx")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("22_b5wqg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_qku5p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_b5wqg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_18rq2")
-}],
-"loop": true,
-"name": &"left_walk",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("22_b5wqg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_qku5p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_b5wqg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_ccdwq")
-}],
-"loop": true,
-"name": &"right_walk",
-"speed": 5.0
-}]
-
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(129, 31)
 script = ExtResource("1_g2u8i")
+follow_player_when_near = null
+follow_distance = null
+speed = null
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(-1.9073486e-06, -1)
 scale = Vector2(1, 0.891)
 sprite_frames = SubResource("SpriteFrames_ul7y6")
+animation = &"back_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-7.6293945e-06, 0)
 shape = SubResource("CircleShape2D_bc6q4")
 
 [node name="ChatDetection" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
 shape = SubResource("CircleShape2D_mcvl2")
@@ -327,30 +218,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageTimer" type="Timer" parent="."]
 
-[node name="TargetableArea" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetableArea"]
-shape = SubResource("CircleShape2D_g2u8i")
-
-[node name="AttackRange" type="Area2D" parent="." groups=["TargetEnemy"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-shape = SubResource("CircleShape2D_otto8")
-
-[node name="AnimatedSprite2DEnemy" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_0jgdh")
-animation = &"left_walk"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
-offset_left = -298.0
-offset_top = -53.0
-offset_right = -258.0
-offset_bottom = -13.0
-
-[node name="ResTimer" type="Timer" parent="."]
-
 [connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]
 [connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]
 [connection signal="area_exited" from="ChatDetection" to="." method="_on_chat_detection_area_exited"]
@@ -365,5 +232,3 @@ offset_bottom = -13.0
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="dialogue_finished" from="dialogue" to="." method="_on_dialogue_dialogue_finished"]
 [connection signal="timeout" from="TimerIdle" to="." method="_on_timer_idle_timeout"]
-[connection signal="mouse_entered" from="TargetableArea" to="." method="_on_targetable_area_mouse_entered"]
-[connection signal="mouse_exited" from="TargetableArea" to="." method="_on_targetable_area_mouse_exited"]

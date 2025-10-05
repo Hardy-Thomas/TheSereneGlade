@@ -929,6 +929,30 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tt6x2")
 sources/1 = SubResource("TileSetAtlasSource_v8txl")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hduv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qm0bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6qxfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xixhc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o7lt1"]
+radius = 31.0
+height = 114.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5ywv"]
+size = Vector2(122, 13)
+
 [node name="Cript" type="Node2D"]
 script = ExtResource("1_j5ywv")
 
@@ -1002,17 +1026,13 @@ position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_j5ywv")
 
 [node name="Enemy" parent="." instance=ExtResource("10_xixhc")]
-position = Vector2(724, 342)
-damage_amount2 = 680
-damage_amount = 810
-damage_interval = 0.175
+position = Vector2(727, 382)
 
-[node name="Follower" parent="." groups=["Ally"] instance=ExtResource("11_tt6x2")]
-position = Vector2(799, 399)
-damage_amount = 1
-
-[node name="Follower2" parent="." groups=["Ally"] instance=ExtResource("11_tt6x2")]
-position = Vector2(683, 414)
-damage_amount = 1
+[node name="Follower" parent="." instance=ExtResource("11_tt6x2")]
+position = Vector2(664, 362)
+follow_player_when_near = null
+follow_distance = null
+damage_amount = null
+speed = null
 
 [connection signal="body_entered" from="OutputPort" to="OutputPort" method="_on_body_entered"]
