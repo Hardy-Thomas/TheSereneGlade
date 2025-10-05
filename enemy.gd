@@ -1,15 +1,15 @@
 extends FollowerSmarter
 
+@export var damage_amount2: int = 15  # ← Ajoute cette ligne, valeur par défaut
+
 var is_mouse_on = false
-@onready var anim_enemy: AnimatedSprite2D = $AnimatedSprite2DEnemy
+
+
+
 func _ready() -> void:
-	
 	super._ready()
-	# On cache l'ancien sprite hérité
-	$AnimatedSprite2D2.visible = false
-	# On démarre l'animation par défaut
-	anim_enemy.play("idle")
-	
+	$AnimatedSprite2D2.play("default")
+
 	# Connexion pour sélection manuelle
 	$ChatDetection.connect("input_event", Callable(self, "_on_chat_detection_input_event"))
 
@@ -70,7 +70,6 @@ func select_target() -> void:
 	
 	# S'assure qu'on ne se choisit pas soi-même
 	allies = allies.filter(func(a): return a != self)
-	print("YOu were here")
 	if allies.size() > 0:
 		# Choisit un Ally aléatoire en priorité
 		target = allies[0]
@@ -107,8 +106,8 @@ func _on_proximity_too_close_body_exited(body: Node2D) -> void:
 # --- Application des dégâts ---
 func _on_damage_timer_timeout() -> void:
 	if target_in_range and target_in_range.has_method("take_damage"):
-		target_in_range.take_damage(damage_amount)
-		print(name, "inflige", damage_amount, "dégâts à", target_in_range.name)
+		target_in_range.take_damage(damage_amount2)
+		print(name, "inflige", damage_amount2, "dégâts à", target_in_range.name)
 
 
 func take_damage(damage: int) -> void:
@@ -138,20 +137,3 @@ func _on_targetable_area_mouse_entered() -> void:
 
 func _on_targetable_area_mouse_exited() -> void:
 	is_mouse_on = false
-
-
-# --- Redéfinition des animations (utilise AnimatedSprite2DEnemy) ---
-func _play_walk_animation(direction: Vector2) -> void:
-	if abs(direction.x) > abs(direction.y):
-		if direction.x > 0:
-			anim_enemy.play("right_walk")
-		else:
-			anim_enemy.play("left_walk")
-	else:
-		if direction.y > 0:
-			anim_enemy.play("front_walk")
-		else:
-			anim_enemy.play("back_walk")
-
-func _play_idle_animation(direction: Vector2) -> void:
-	anim_enemy.play("idle")

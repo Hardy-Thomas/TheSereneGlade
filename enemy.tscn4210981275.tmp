@@ -280,6 +280,12 @@ animations = [{
 visible = false
 position = Vector2(129, 31)
 script = ExtResource("1_g2u8i")
+damage_amount2 = null
+follow_player_when_near = null
+follow_distance = null
+damage_amount = null
+damage_interval = null
+speed = null
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1.9073486e-06, -1)
