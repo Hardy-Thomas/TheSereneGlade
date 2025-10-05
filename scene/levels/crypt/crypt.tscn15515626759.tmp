@@ -1027,6 +1027,10 @@ tile_set = SubResource("TileSet_1b7ql")
 
 [node name="Enemy" parent="." instance=ExtResource("11_tt6x2")]
 position = Vector2(757, 361)
+damage_amount = 10
+damage_interval = 1.0
+Health = 50
+restime = 15
 
 [node name="Follower" parent="." instance=ExtResource("10_xixhc")]
 position = Vector2(478, 399)

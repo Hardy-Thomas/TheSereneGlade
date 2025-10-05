@@ -698,5 +698,10 @@ position = Vector2(783, 543)
 
 [node name="Follower" parent="." instance=ExtResource("16_jcbur")]
 position = Vector2(424, 334)
+follow_player_when_near = null
+follow_distance = null
+speed2 = null
+Health = null
+restime = null
 
 [connection signal="body_entered" from="porteCript" to="porteCript" method="_on_body_entered"]
