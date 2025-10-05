@@ -5,17 +5,21 @@ var target_in_range: Node2D = null
 @export var follow_distance := 4.0
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @export var target: Node2D = null
+@onready var res_timer: Timer = $ResTimer
+@onready var label: RichTextLabel = $RichTextLabel
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var damage_amount = 15
 @export var damage_interval: float = 1.0  # délai entre deux coups (en secondes)
-
+var is_ko := false
 var last_direction := Vector2.ZERO
 var idle := false
 var speed2 = 100
 var target_priority =1
 var Health =100
 var is_attaking =false
+
 func _ready() -> void:
+	label.text = ""
 	await get_tree().process_frame
 	_play_idle_animation(Vector2.ZERO)
 	is_roaming = true
@@ -24,10 +28,10 @@ func _ready() -> void:
 	start_pos = position
 	idle = false
 	targeting()
-
+	res_timer.connect("timeout", Callable(self, "_on_res_timer_timeout"))
 func _process(delta):
 	if Health<=0 :
-		queue_free()
+		ko(15)
 	if velocity != Vector2.ZERO:
 		last_direction = velocity.normalized()
 		_play_walk_animation(last_direction)
@@ -224,7 +228,7 @@ func _on_attack_range_body_entered(body: Node2D) -> void:
 		is_attaking = true
 		print("Follower attaque :", body.name)
 
-		if not has_node("DamageTimer"):
+		if not has_node("DamageTimer") && !is_ko:
 			var timer = Timer.new()
 			timer.name = "DamageTimer"
 			timer.wait_time = damage_interval  # <--- important !
@@ -250,3 +254,21 @@ func _on_attack_range_body_exited(body: Node2D) -> void:
 func _on_follower_damage_timer_timeout() -> void:
 	if target_in_range and target_in_range.has_method("take_damage"):
 		target_in_range.take_damage(damage_amount)
+func ko(duration: float) -> void:
+	if is_ko:
+		return
+	is_ko = true
+	is_following = false
+	#anim_sprite.play("stun")
+	res_timer.wait_time = duration
+	res_timer.start()
+	label.text = str(round(duration))
+
+
+
+
+func _on_res_timer_timeout() -> void:
+	is_ko = false
+	is_following = true
+#	anim_sprite.play("idle")
+	label.text = ""

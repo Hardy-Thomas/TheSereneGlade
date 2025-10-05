@@ -1026,17 +1026,16 @@ position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_j5ywv")
 
 [node name="Enemy" parent="." instance=ExtResource("10_xixhc")]
-position = Vector2(724, 342)
-damage_amount2 = 680
-damage_amount = 810
-damage_interval = 0.175
+visible = true
+position = Vector2(720, 329)
+damage_amount2 = 15
+follow_player_when_near = true
+follow_distance = 4.0
+damage_amount = 15
+damage_interval = 1.0
+speed = 30.0
 
 [node name="Follower" parent="." groups=["Ally"] instance=ExtResource("11_tt6x2")]
-position = Vector2(799, 399)
-damage_amount = 1
-
-[node name="Follower2" parent="." groups=["Ally"] instance=ExtResource("11_tt6x2")]
-position = Vector2(683, 414)
-damage_amount = 1
+position = Vector2(826, 457)
 
 [connection signal="body_entered" from="OutputPort" to="OutputPort" method="_on_body_entered"]

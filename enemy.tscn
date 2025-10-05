@@ -177,7 +177,7 @@ radius = 64.412735
 radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_otto8"]
-radius = 28.01785
+radius = 46.09772
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0jgdh"]
 animations = [{
@@ -277,11 +277,11 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D"]
-visible = false
 position = Vector2(129, 31)
 script = ExtResource("1_g2u8i")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-1.9073486e-06, -1)
 scale = Vector2(1, 0.891)
 sprite_frames = SubResource("SpriteFrames_ul7y6")
@@ -328,6 +328,7 @@ metadata/_edit_use_anchors_ = true
 [node name="DamageTimer" type="Timer" parent="."]
 
 [node name="TargetableArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetableArea"]
 shape = SubResource("CircleShape2D_g2u8i")
@@ -340,6 +341,15 @@ shape = SubResource("CircleShape2D_otto8")
 [node name="AnimatedSprite2DEnemy" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0jgdh")
 animation = &"left_walk"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -298.0
+offset_top = -53.0
+offset_right = -258.0
+offset_bottom = -13.0
+
+[node name="ResTimer" type="Timer" parent="."]
 
 [connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]
 [connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]

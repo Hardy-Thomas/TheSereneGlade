@@ -3,7 +3,7 @@ extends FollowerSmarter
 @export var damage_amount2: int = 15  # ← Ajoute cette ligne, valeur par défaut
 
 var is_mouse_on = false
-
+@onready var anim_enemy: AnimatedSprite2D = $AnimatedSprite2DEnemy
 
 
 func _ready() -> void:
@@ -65,20 +65,24 @@ func _physics_process(delta: float) -> void:
 
 # --- Sélection d'une cible ---
 func select_target() -> void:
+
 	var allies = get_tree().get_nodes_in_group("Ally")
 	var players = get_tree().get_nodes_in_group("Player")
 	
 	# S'assure qu'on ne se choisit pas soi-même
 	allies = allies.filter(func(a): return a != self)
-	if allies.size() > 0:
+	allies = allies.filter(func(a): return !a.is_ko)
+	if allies.size() > 0 :
+
 		# Choisit un Ally aléatoire en priorité
 		target = allies[0]
 		print(target.get_groups())
 		print(name, " attaque en priorité :  ", target.name, "(Ally)")
 	elif players.size() > 0:
+
 		# Si aucun Ally, alors vise Player
 		target = players[randi() % players.size()] # ← au cas où plusieurs players
-		print(name, "attaque par défaut :", target.name, "(Player)")
+		print(name, " attaque par défaut :", target.name, "(Player)")
 	else:
 		target = null
 		print(name, "n’a trouvé aucune cible.")
@@ -137,3 +141,17 @@ func _on_targetable_area_mouse_entered() -> void:
 
 func _on_targetable_area_mouse_exited() -> void:
 	is_mouse_on = false
+func _play_walk_animation(direction: Vector2) -> void:
+	if abs(direction.x) > abs(direction.y):
+		if direction.x > 0:
+			anim_enemy.play("right_walk")
+		else:
+			anim_enemy.play("left_walk")
+	else:
+		if direction.y > 0:
+			anim_enemy.play("front_walk")
+		else:
+			anim_enemy.play("back_walk")
+
+func _play_idle_animation(direction: Vector2) -> void:
+	anim_enemy.play("idle")
