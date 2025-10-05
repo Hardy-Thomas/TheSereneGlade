@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://nq6125qxrgv4"]
+[gd_scene load_steps=22 format=4 uid="uid://nq6125qxrgv4"]
 
 [ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://scene/character/player/player.tscn" id="1_ihp3y"]
 [ext_resource type="Script" uid="uid://cl4lxifwtsrml" path="res://scene/levels/crypt/crypt.gd" id="1_j5ywv"]
@@ -9,8 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://diklt20341vfn" path="res://ART/Props/crypte/lake/sprite_1.png" id="5_6qxfc"]
 [ext_resource type="Texture2D" uid="uid://djwgw6aupcio1" path="res://ART/Props/crypte/lake/sprite_2.png" id="6_xixhc"]
 [ext_resource type="Script" uid="uid://lavr2oxpghii" path="res://scene/levels/crypt/output_port.gd" id="9_xixhc"]
-[ext_resource type="PackedScene" uid="uid://cnmyy82xbpjtj" path="res://enemy.tscn" id="10_xixhc"]
-[ext_resource type="PackedScene" uid="uid://b08wqhlwihpsu" path="res://followersmarter.tscn" id="11_tt6x2"]
+[ext_resource type="PackedScene" uid="uid://cwm7o1bb31tkq" path="res://enemy.tscn" id="10_xixhc"]
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 length = 0.001
@@ -54,10 +53,34 @@ _data = {
 &"fade_out": SubResource("Animation_272bh")
 }
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_xixhc"]
-vertices = PackedVector2Array(932.28125, 81.28125, 943.7031, 477.95313, 755.65625, 293.46875, 752.7031, 282, 747.4531, 261.2422, 745.6406, 253.3125, 752.0469, 282, 740.3125, 237.27344, 625.6719, 330, 642.65625, 324.17188, 657.72656, 320.95313, 662, 320.3828, 662, 322.53906, 274.64063, 475.03906, 727.21875, 238.85156, 727.21875, 230, 727.3281, 214, 550, 290.28906, 572.7422, 290.03125, 572.1719, 298, 727.14844, 230, 502, 290.28906, 518, 290.10938, 518, 290.28906, 534, 290.10938, 534, 290.28906, 550, 290.10938, 618, 330.1328, 618, 330, 575.10156, 298, 576.71875, 305.97656, 714, 306.42188, 714, 305.9922, 728.2969, 302.1328, 698, 312.8203, 698, 311.3672, 261.34375, 100.703125, 502, 214, 746.1406, 295.79688, 738.9922, 304.03125, 733.7578, 302.0703, 580.39844, 328.1328, 582, 329.20313, 582, 336.5078, 577.7969, 312.03125, 602.96875, 334.45313)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(2, 6, 3), PackedInt32Array(0, 5, 7), PackedInt32Array(8, 9, 10, 11, 12, 13), PackedInt32Array(0, 7, 14, 15, 16), PackedInt32Array(17, 18, 19), PackedInt32Array(15, 20, 16), PackedInt32Array(21, 22, 23, 13), PackedInt32Array(23, 24, 25), PackedInt32Array(25, 26, 17), PackedInt32Array(27, 28, 8), PackedInt32Array(19, 29, 30), PackedInt32Array(31, 32, 33), PackedInt32Array(34, 35, 31, 33), PackedInt32Array(36, 0, 16, 37), PackedInt32Array(13, 36, 37, 21), PackedInt32Array(38, 2, 1, 39), PackedInt32Array(33, 40, 39, 1, 13, 34), PackedInt32Array(41, 42, 43), PackedInt32Array(17, 19, 30, 44, 41, 25), PackedInt32Array(23, 25, 41, 43, 13), PackedInt32Array(13, 43, 45), PackedInt32Array(45, 27, 8, 13), PackedInt32Array(13, 12, 34)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(251, 91, 942, 71, 954, 488, 265, 485)])
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hduv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qm0bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6qxfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xixhc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o7lt1"]
+radius = 31.0
+height = 114.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5ywv"]
+size = Vector2(122, 13)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_v8txl"]
+vertices = PackedVector2Array(896, 113.38281, 896, 432.96094, 755.65625, 293.46875, 752.7031, 282, 747.4531, 261.2422, 745.6406, 253.3125, 752.0469, 282, 740.3125, 237.27344, 642.65625, 324.17188, 657.72656, 320.95313, 662, 320.3828, 662, 322.53906, 625.6719, 330, 727.21875, 238.85156, 727.21875, 230, 727.3281, 214, 550, 290.28906, 572.7422, 290.03125, 572.1719, 298, 727.14844, 230, 502, 290.28906, 518, 290.10938, 518, 290.28906, 534, 290.10938, 534, 290.28906, 550, 290.10938, 618, 330.1328, 618, 330, 575.10156, 298, 576.71875, 305.97656, 738.9922, 304.03125, 714, 306.42188, 714, 305.9922, 728.2969, 302.1328, 733.7578, 302.0703, 698, 312.8203, 698, 311.3672, 288.1797, 136.60938, 502, 214, 293.8125, 431.03125, 746.1406, 295.79688, 580.39844, 328.1328, 582, 329.20313, 582, 336.5078, 577.7969, 312.03125, 602.96875, 334.45313)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(2, 6, 3), PackedInt32Array(0, 5, 7), PackedInt32Array(8, 9, 10, 11, 12), PackedInt32Array(0, 7, 13, 14, 15), PackedInt32Array(16, 17, 18), PackedInt32Array(14, 19, 15), PackedInt32Array(20, 21, 22), PackedInt32Array(22, 23, 24), PackedInt32Array(24, 25, 16), PackedInt32Array(26, 27, 12), PackedInt32Array(18, 28, 29), PackedInt32Array(30, 31, 32, 33, 34), PackedInt32Array(35, 36, 31, 30), PackedInt32Array(37, 0, 15, 38), PackedInt32Array(39, 37, 38, 20), PackedInt32Array(40, 2, 1, 30), PackedInt32Array(35, 30, 1, 39, 11), PackedInt32Array(41, 42, 43), PackedInt32Array(16, 18, 29, 44, 41, 24), PackedInt32Array(24, 41, 43, 22), PackedInt32Array(20, 22, 43, 39), PackedInt32Array(45, 26, 12, 39), PackedInt32Array(12, 11, 39), PackedInt32Array(39, 43, 45)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(278, 127, 906, 103, 906, 443, 284, 441)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tt6x2"]
 texture = ExtResource("2_0up7y")
@@ -952,13 +975,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_5vw27")
 }
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_xixhc")
-
-[node name="Decor" type="TileMapLayer" parent="NavigationRegion2D"]
-tile_map_data = PackedByteArray("AAAgAA4AAQASAAAAAAAhAA4AAQATAAAAAAAiAA4AAQAUAAAAAAAjAA4AAQAVAAAAAAAkAA4AAQAWAAAAAAAlAA4AAQAXAAAAAAAmAA4AAQAYAAAAAAAnAA4AAQAZAAAAAAAoAA4AAQAaAAAAAAApAA4AAQAbAAAAAAAqAA4AAQAcAAAAAAArAA4AAQAdAAAAAAArAA8AAQAdAAEAAAAsAA8AAQAeAAEAAAAtAA8AAQAfAAEAAAAsAA4AAQAeAAAAAAAsABAAAQAeAAIAAAAtABEAAQAfAAMAAAAuABEAAQAgAAMAAAAuABAAAQAgAAIAAAAtABAAAQAfAAIAAAAsABEAAQAeAAMAAAAsABIAAQAeAAQAAAAuABIAAQAgAAQAAAArABEAAQAdAAMAAAArABIAAQAdAAQAAAAtABIAAQAfAAQAAAAqABMAAQAcAAUAAAApABMAAQAbAAUAAAAoABMAAQAaAAUAAAAqABIAAQAcAAQAAAAmABQAAQAYAAYAAAApABIAAQAbAAQAAAAnABMAAQAZAAUAAAAlABQAAQAXAAYAAAAkABQAAQAWAAYAAAAlABMAAQAXAAUAAAAmABMAAQAYAAUAAAAoABIAAQAaAAQAAAAqABEAAQAcAAMAAAAnABIAAQAZAAQAAAApABEAAQAbAAMAAAAoABEAAQAaAAMAAAAnABEAAQAZAAMAAAAmABIAAQAYAAQAAAAlABIAAQAXAAQAAAAkABMAAQAWAAUAAAArABAAAQAdAAIAAAAqABAAAQAcAAIAAAAkABIAAQAWAAQAAAAmABEAAQAYAAMAAAApABAAAQAbAAIAAAAoABAAAQAaAAIAAAAqAA8AAQAcAAEAAAAnABAAAQAZAAIAAAAlABEAAQAXAAMAAAAkABEAAQAWAAMAAAAmABAAAQAYAAIAAAAoAA8AAQAaAAEAAAAlABAAAQAXAAIAAAAkABAAAQAWAAIAAAAjABAAAQAVAAIAAAAiABAAAQAUAAIAAAAhABAAAQATAAIAAAAhAA8AAQATAAEAAAAgAA8AAQASAAEAAAAgABAAAQASAAIAAAAgABEAAQASAAMAAAAhABEAAQATAAMAAAAiABEAAQAUAAMAAAAjABEAAQAVAAMAAAAiAA8AAQAUAAEAAAAjAA8AAQAVAAEAAAAkAA8AAQAWAAEAAAAlAA8AAQAXAAEAAAAmAA8AAQAYAAEAAAApAA8AAQAbAAEAAAAnAA8AAQAZAAEAAAA=")
-tile_set = SubResource("TileSet_1b7ql")
-
 [node name="Player" parent="." instance=ExtResource("1_ihp3y")]
 position = Vector2(597, 389)
 
@@ -1001,18 +1017,14 @@ script = ExtResource("9_xixhc")
 position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_j5ywv")
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_v8txl")
+
+[node name="Decor" type="TileMapLayer" parent="NavigationRegion2D"]
+tile_map_data = PackedByteArray("AAAgAA4AAQASAAAAAAAhAA4AAQATAAAAAAAiAA4AAQAUAAAAAAAjAA4AAQAVAAAAAAAkAA4AAQAWAAAAAAAlAA4AAQAXAAAAAAAmAA4AAQAYAAAAAAAnAA4AAQAZAAAAAAAoAA4AAQAaAAAAAAApAA4AAQAbAAAAAAAqAA4AAQAcAAAAAAArAA4AAQAdAAAAAAArAA8AAQAdAAEAAAAsAA8AAQAeAAEAAAAtAA8AAQAfAAEAAAAsAA4AAQAeAAAAAAAsABAAAQAeAAIAAAAtABEAAQAfAAMAAAAuABEAAQAgAAMAAAAuABAAAQAgAAIAAAAtABAAAQAfAAIAAAAsABEAAQAeAAMAAAAsABIAAQAeAAQAAAAuABIAAQAgAAQAAAArABEAAQAdAAMAAAArABIAAQAdAAQAAAAtABIAAQAfAAQAAAAqABMAAQAcAAUAAAApABMAAQAbAAUAAAAoABMAAQAaAAUAAAAqABIAAQAcAAQAAAAmABQAAQAYAAYAAAApABIAAQAbAAQAAAAnABMAAQAZAAUAAAAlABQAAQAXAAYAAAAkABQAAQAWAAYAAAAlABMAAQAXAAUAAAAmABMAAQAYAAUAAAAoABIAAQAaAAQAAAAqABEAAQAcAAMAAAAnABIAAQAZAAQAAAApABEAAQAbAAMAAAAoABEAAQAaAAMAAAAnABEAAQAZAAMAAAAmABIAAQAYAAQAAAAlABIAAQAXAAQAAAAkABMAAQAWAAUAAAArABAAAQAdAAIAAAAqABAAAQAcAAIAAAAkABIAAQAWAAQAAAAmABEAAQAYAAMAAAApABAAAQAbAAIAAAAoABAAAQAaAAIAAAAqAA8AAQAcAAEAAAAnABAAAQAZAAIAAAAlABEAAQAXAAMAAAAkABEAAQAWAAMAAAAmABAAAQAYAAIAAAAoAA8AAQAaAAEAAAAlABAAAQAXAAIAAAAkABAAAQAWAAIAAAAjABAAAQAVAAIAAAAiABAAAQAUAAIAAAAhABAAAQATAAIAAAAhAA8AAQATAAEAAAAgAA8AAQASAAEAAAAgABAAAQASAAIAAAAgABEAAQASAAMAAAAhABEAAQATAAMAAAAiABEAAQAUAAMAAAAjABEAAQAVAAMAAAAiAA8AAQAUAAEAAAAjAA8AAQAVAAEAAAAkAA8AAQAWAAEAAAAlAA8AAQAXAAEAAAAmAA8AAQAYAAEAAAApAA8AAQAbAAEAAAAnAA8AAQAZAAEAAAA=")
+tile_set = SubResource("TileSet_1b7ql")
+
 [node name="Enemy" parent="." instance=ExtResource("10_xixhc")]
-position = Vector2(724, 342)
-damage_amount2 = 680
-damage_amount = 810
-damage_interval = 0.175
-
-[node name="Follower" parent="." groups=["Ally"] instance=ExtResource("11_tt6x2")]
-position = Vector2(799, 399)
-damage_amount = 1
-
-[node name="Follower2" parent="." groups=["Ally"] instance=ExtResource("11_tt6x2")]
-position = Vector2(683, 414)
-damage_amount = 1
+position = Vector2(293, 340)
 
 [connection signal="body_entered" from="OutputPort" to="OutputPort" method="_on_body_entered"]

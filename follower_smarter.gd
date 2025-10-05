@@ -3,6 +3,10 @@ class_name FollowerSmarter
 var target_in_range: Node2D = null
 @export var follow_player_when_near := true
 @export var follow_distance := 4.0
+@export var speed2 := 100
+@export var Health := 50
+@export var restime := 15
+
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @export var target: Node2D = null
 @onready var res_timer: Timer = $ResTimer
@@ -22,11 +26,6 @@ func _ready() -> void:
 	label.text = ""
 	await get_tree().process_frame
 	_play_idle_animation(Vector2.ZERO)
-	is_roaming = true
-	is_chatting = false
-	is_following = true
-	start_pos = position
-	idle = false
 	targeting()
 	res_timer.connect("timeout", Callable(self, "_on_res_timer_timeout"))
 func _process(delta):
@@ -114,55 +113,63 @@ func targeting():
 			$DamageTimer.connect("timeout", Callable(self, "_on_damage_timer_timeout"))
 
 
+# --- Animations ---
 func _play_walk_animation(direction: Vector2) -> void:
 	if abs(direction.x) > abs(direction.y):
 		if direction.x > 0:
-			$AnimatedSprite2D2.play("right_walk")
+			anim_sprite.play("right_walk")
 		else:
-			$AnimatedSprite2D2.play("left_walk")
+			anim_sprite.play("left_walk")
 	else:
 		if direction.y > 0:
-			$AnimatedSprite2D2.play("front_walk")
+			anim_sprite.play("front_walk")
 		else:
-			$AnimatedSprite2D2.play("back_walk")
+			anim_sprite.play("back_walk")
 
 
 func _play_idle_animation(direction: Vector2) -> void:
-	$AnimatedSprite2D2.play("idle")
-func _on_TimerIdle_timeout() -> void:
-	idle = true
-	_play_idle_animation(last_direction)
+	anim_sprite.play("idle")
 
-# --- Zones de proximité et dialogue ---
-func _on_chat_detection_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		player = body
-		player_in_chat_zone = true
-		is_following = false
+# --- KO ---
+func ko(duration: float) -> void:
+	if is_ko:
+		return
 
-func _on_chat_detection_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		player_in_chat_zone = false
-		is_following = false
-		emit_signal("dialogue_exited")
+	is_ko = true
+	is_following = false
+	anim_sprite.play("stun")
+	res_timer.wait_time = duration
+	res_timer.start()
+	label.text = str(round(duration))
 
+func _on_res_timer_timeout() -> void:
+	is_ko = false
+	is_following = true
+	anim_sprite.play("default")
+	label.text = ""
+
+# --- Attaque orientée ---
 func _on_proximity_too_close_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if attack_mode and body.is_in_group("Enemy"):
 		is_following = false
-
-func _on_proximity_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		player = body
-		is_following = follow_player_when_near
+		target = body
+		_update_attack_orientation()
+		if attack_sprite.has_animation("attack"):
+			attack_sprite.play("attack")
 
 func _on_proximity_too_close_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body == target:
+		target = null
 		is_following = follow_player_when_near
+		attack_sprite.stop()
 
+func _update_attack_orientation() -> void:
+	if not target or not attack_sprite:
+		return
 
-func _on_chat_detection_mouse_entered() -> void:
-	is_mouse = true
-	
+	var direction = (target.global_position - global_position).normalized()
+	var distance = 20  # distance devant le NPC
+	attack_sprite.position = direction * distance
 
 func _on_chat_detection_mouse_exited() -> void:
 	is_mouse = false

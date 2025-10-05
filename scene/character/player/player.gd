@@ -1,9 +1,9 @@
 extends CharacterBody2D
 signal command_attack
 
-@export var speed = 400 # HERE we set up the speed variable and it can be changed afterward 
-var screen_size # Size of the game window.
-@export var  Health = 100
+@export var speed = 400
+@export var Health = 100
+var screen_size
 var can_move = true
 var attack_order = false
 func _ready():
@@ -12,7 +12,6 @@ func _ready():
 
 
 
-#code that i stole from the tutorial and changed
 func _process(delta):
 	Global.attack_order = self.attack_order
 	if Input.is_action_just_pressed("attack_order"):
@@ -22,41 +21,31 @@ func _process(delta):
 	velocity = Vector2.ZERO # The player's movement vector.
 	move_and_slide()
 	if can_move:
-		# --- Déplacements ---
 		if Input.is_action_pressed("move_right"):
-			SoundManager.play_sound("walk")
 			velocity.x += 1
 		if Input.is_action_pressed("move_left"):
-			SoundManager.play_sound("walk")
 			velocity.x -= 1
 		if Input.is_action_pressed("move_down"):
-			SoundManager.play_sound("walk")
 			velocity.y += 1
 		if Input.is_action_pressed("move_up"):
-			SoundManager.play_sound("walk")
 			velocity.y -= 1
 
-		# --- Normalisation et mouvement ---
-		if velocity.length() > 0:
-			velocity = velocity.normalized() * speed
-			position += velocity * delta
-			position = position.clamp(Vector2.ZERO, screen_size)
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+		position += velocity * delta
+		position = position.clamp(Vector2.ZERO, screen_size)
+		_update_animation()
+	else:
+		$AnimatedSprite2D.stop()
 
-			# --- Choix de l'animation en fonction de la direction ---
-			if abs(velocity.x) > abs(velocity.y): 
-				# Mouvement horizontal prioritaire
-				if velocity.x > 0:
-					$AnimatedSprite2D.animation = "RightWalk"
-				else:
-					$AnimatedSprite2D.animation = "LeftWalk"
-			else:
-				# Mouvement vertical prioritaire
-				if velocity.y > 0:
-					$AnimatedSprite2D.animation = "DownWalk"
-				else:
-					$AnimatedSprite2D.animation = "UpWalk"
+	if Health <= 0:
+		print('full dead')
+		die()
 
-			$AnimatedSprite2D.play()
+func _update_animation():
+	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			$AnimatedSprite2D.animation = "RightWalk"
 		else:
 			# Pas de mouvement → animation arrêtée
 			$AnimatedSprite2D.stop()
@@ -66,18 +55,36 @@ func _process(delta):
 		if Health <=0 : 
 			die()
 func die() -> void:
-	# Joue l'animation de mort
-	$AnimatedSprite2D.animation = "die"
-	can_move=false
-	# Configure et démarre le timer de mort
+
+	#$AnimatedSprite2D.animation = "die"
+
+	can_move = false
 	$TimerDeath.wait_time = 4
+	
 	$TimerDeath.start()
-	
-	# Attend la fin du timer avant de changer de scène
 	await $TimerDeath.timeout
-	
-	# Change de scène une fois le timer terminé
 	get_tree().change_scene_to_file("res://scene/levels/title/title_scene.tscn")
+
+func take_damage(damage : int):
+	Health -= damage
+	print("Player Health:", Health)
+
+# --- Mode attaque pour les followers ---
+func _start_attack_mode():
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	if enemies.size() == 0:
+		return
+
+	var target_enemy = enemies[0]  # On choisit le premier ennemi visible
+	print("Cible attaquée :", target_enemy.name)
+
+	# On active le mode attaque pour tous les followers
+	var followers = get_tree().get_nodes_in_group("Followers")
+	for f in followers:
+		if f.has_method("set_attack_mode"):
+			f.set_attack_mode(true)
+			f.target = target_enemy  # assigner la cible directement
+
 
 func _on_timer_death_timeout() -> void:
 	$TimerDeath.wait_time = 5 
