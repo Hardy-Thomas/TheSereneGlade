@@ -5,12 +5,20 @@ signal command_attack
 var screen_size # Size of the game window.
 @export var  Health = 100
 var can_move = true
+var attack_order = false
 func _ready():
 	screen_size = get_viewport_rect().size #get the size of my screen bc the tuto said so
-	
+
+
+
 
 #code that i stole from the tutorial and changed
 func _process(delta):
+	Global.attack_order = self.attack_order
+	if Input.is_action_just_pressed("attack_order"):
+		attack_order = true
+	if Input.is_action_just_released("attack_order"):
+		attack_order = false		
 	velocity = Vector2.ZERO # The player's movement vector.
 	move_and_slide()
 	if can_move:
@@ -55,7 +63,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_accept"):
 			#die()
 			pass
-		if Health ==0 : 
+		if Health <=0 : 
 			die()
 func die() -> void:
 	# Joue l'animation de mort
@@ -74,3 +82,6 @@ func die() -> void:
 func _on_timer_death_timeout() -> void:
 	$TimerDeath.wait_time = 5 
 	$TimerDeath.start()
+func take_damage(damage : int):
+	print(Health)
+	Health = Health - damage

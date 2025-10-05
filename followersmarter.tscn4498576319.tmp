@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b08wqhlwihpsu"]
+[gd_scene load_steps=24 format=3 uid="uid://b08wqhlwihpsu"]
 
 [ext_resource type="Script" uid="uid://dyuvlx53ov63g" path="res://follower_smarter.gd" id="1_mk38w"]
 [ext_resource type="Texture2D" uid="uid://b7jlunphmp7rv" path="res://ART/Sprites/Follower/follower1/back/sprite_12.png" id="2_xv4ud"]
@@ -166,9 +166,6 @@ radius = 530.0009
 [sub_resource type="CircleShape2D" id="CircleShape2D_5we18"]
 radius = 64.412735
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mk38w"]
-radius = 24.0
-
 [node name="Follower" type="CharacterBody2D"]
 position = Vector2(129, 31)
 script = ExtResource("1_mk38w")
@@ -184,10 +181,8 @@ position = Vector2(-7.6293945e-06, 0)
 shape = SubResource("CircleShape2D_bc6q4")
 
 [node name="ChatDetection" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
-visible = false
 shape = SubResource("CircleShape2D_mcvl2")
 
 [node name="Proximity" type="Area2D" parent="."]
@@ -220,11 +215,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageTimer" type="Timer" parent="."]
 
-[node name="AttackRange" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-shape = SubResource("CircleShape2D_mk38w")
-
 [connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]
 [connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]
 [connection signal="area_exited" from="ChatDetection" to="." method="_on_chat_detection_area_exited"]
@@ -240,5 +230,3 @@ shape = SubResource("CircleShape2D_mk38w")
 [connection signal="dialogue_finished" from="dialogue" to="." method="_on_dialogue_dialogue_finished"]
 [connection signal="timeout" from="TimerIdle" to="." method="_on_timer_idle_timeout"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
-[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
-[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
